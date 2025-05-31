@@ -297,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BrickDestroy_0: 440004201269631737
+      BrickDestroy_1: 6428096427953393541
+      BrickDestroy_2: 8603011222089355523
+      BrickDestroy_3: 2274631966701665123
+      BrickDestroy_4: -5598041726246172800
+      BrickDestroy_5: -5070355926835817348
+      BrickDestroy_6: -5028786312047504514
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

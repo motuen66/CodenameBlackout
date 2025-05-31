@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PlayerBlackDeath_0: 1769754006986496279
+      PlayerBlackDeath_1: -7905520708037107564
+      PlayerBlackDeath_2: -7760472639406864888
+      PlayerBlackDeath_3: 7016695799458345149
+      PlayerBlackDeath_4: 7188888301217167298
+      PlayerBlackDeath_5: -6936696252016477181
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
