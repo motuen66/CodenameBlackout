@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - ground
+  - Destrucable
+  - Indestrucable
   - 
   - 
   - 
@@ -41,3 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ground
+    uniqueID: 2437487343
+    locked: 0
+  - name: Object
+    uniqueID: 750329931
+    locked: 0
+  - name: Indestrucable
+    uniqueID: 1336542573
+    locked: 0
+  m_RenderingLayers:
+  - Default
