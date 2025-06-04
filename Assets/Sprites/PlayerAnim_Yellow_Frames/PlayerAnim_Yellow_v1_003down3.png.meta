@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PlayerAnim_Yellow_v1_003down3_0: 3414084435498505741
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

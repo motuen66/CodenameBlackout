@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PlayerAnim_Red_v1_011right3_0: -4314401139660573002
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
