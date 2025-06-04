@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6b98ab81bb026144282dbeeefc00ef34
+guid: 4a756c99b1a9cb0419e3470d08794ef8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -149536997776582764
-    second: PlayerAnim_Green_v1_003down3_0
+      213: -6216415307432488846
+    second: DynamiteAnim_v1.0_frames_002_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerAnim_Green_v1_003down3_0
+      name: DynamiteAnim_v1.0_frames_002_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 16
-        height: 24
+        x: 1
+        y: 3
+        width: 15
+        height: 18
       alignment: 9
-      pivot: {x: 0.5, y: 0.083333336}
+      pivot: {x: 0.5, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4979fbe84ecbcedf0800000000000000
-      internalID: -149536997776582764
+      spriteID: 2709f20c63bdab9a0800000000000000
+      internalID: -6216415307432488846
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: dd1f7daf7ac4e4b43a8c3f5b40cfc26a
+    spriteID: fb26e7aa331dc564a8612163e7d3b676
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerAnim_Green_v1_003down3_0: -149536997776582764
+      DynamiteAnim_v1.0_frames_002_0: -6216415307432488846
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
