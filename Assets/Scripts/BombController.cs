@@ -21,7 +21,7 @@ public class BombController : MonoBehaviour
         // This provides a fallback if the asset isn't dragged in.
         if (inputActions == null)
         {
-            inputActions = new PlayerInputActions();
+            inputActions = new PlayerInputActions(); 
         }
 
         // Subscribe to the "PlaceBomb" action.
@@ -65,49 +65,29 @@ public class BombController : MonoBehaviour
         } 
     }
 
-    //private IEnumerator PlaceBombRoutine()
-    //{
-    //    // Round the player's current position to ensure the bomb is placed precisely
-    //    // in the center of the nearest grid cell.
-    //    Vector2 position = transform.position;
-    //    position.x = Mathf.Round(position.x);
-    //    position.y = Mathf.Round(position.y);
-
-    //    // Instantiate the bomb prefab at the calculated grid position.
-    //    GameObject bomb = Instantiate(bombPrefab, position, Quaternion.identity);
-    //    bombsRemaining--; // Decrease the count of bombs available to place.
-
-    //    // Wait for the specified bomb fuse time.
-    //    yield return new WaitForSeconds(bombFuseTime);
-
-    //    // Debug.Log("Bomb at " + bomb.transform.position + " would explode now.");
-
-    //    // Destroy the bomb after its fuse time.
-    //    // (Currently, this is where the explosion logic would go in a full implementation).
-    //    Destroy(bomb);
-    //    bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
-    //}
-
     private IEnumerator PlaceBombRoutine()
     {
-        // Lấy vị trí hiện tại của nhân vật.
+        // Get the player's current position.
         Vector2 currentPlayerPosition = transform.position;
 
-        // Tính toán vị trí trung tâm của ô lưới mà nhân vật đang đứng.
-        // Mathf.Floor làm tròn xuống số nguyên gần nhất.
-        // Sau đó cộng 0.5f để dịch chuyển đến tâm của ô.
+        // Calculate the center position of the grid cell the player is currently on.
+        // Mathf.Floor rounds down to the nearest integer, giving the bottom-left corner of the grid cell.
+        // Adding 0.5f then shifts the position to the center of that grid cell (assuming 1x1 unit grid cells).
         Vector2 bombPlacementPosition = new Vector2(
             Mathf.Floor(currentPlayerPosition.x) + 0.5f,
             Mathf.Floor(currentPlayerPosition.y) + 0.5f
         );
 
-        // Tạo một quả bom tại vị trí tâm của ô lưới
+        // Instantiate a bomb prefab at the calculated center of the grid cell.
         GameObject bomb = Instantiate(bombPrefab, bombPlacementPosition, Quaternion.identity);
-        bombsRemaining--; // Giảm số bom còn lại
+        bombsRemaining--; // Decrease the count of bombs available to place.
 
+        // Wait for the bomb's fuse time.
         yield return new WaitForSeconds(bombFuseTime);
 
+        // Destroy the bomb GameObject after the fuse time expires.
+        // (In a full game, explosion logic would be triggered here).
         Destroy(bomb);
-        bombsRemaining++;
+        bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
     }
 }
