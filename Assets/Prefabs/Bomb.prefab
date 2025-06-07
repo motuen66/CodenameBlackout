@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4706589227240813234}
   - component: {fileID: 2177154410190903340}
   - component: {fileID: 6974952504748750608}
+  - component: {fileID: -1803682489428817909}
   m_Layer: 6
   m_Name: Bomb
   m_TagString: Untagged
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1857479953
-  m_SortingLayer: 1
+  m_SortingLayerID: 750329931
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 5692053119587525389, guid: 09e8597c8c4be3b46a2b8bcd32ab1e87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -154,7 +155,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.4}
     oldSize: {x: 0.8125, y: 1}
     newSize: {x: 0.13, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -186,3 +187,15 @@ MonoBehaviour:
   animationTime: 0.1666667
   loop: 1
   idle: 0
+--- !u!114 &-1803682489428817909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066460438072796987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ffef0d71a1633b4eb2c6080d1b2ceab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
