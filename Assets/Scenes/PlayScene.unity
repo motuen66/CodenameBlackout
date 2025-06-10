@@ -17992,6 +17992,7 @@ MonoBehaviour:
   spriteRendererDown: {fileID: 1591151835}
   spriteRendererLeft: {fileID: 1473510950}
   spriteRendererRight: {fileID: 2101714511}
+  bombController: {fileID: 0}
 --- !u!114 &1703463662
 MonoBehaviour:
   m_ObjectHideFlags: 0

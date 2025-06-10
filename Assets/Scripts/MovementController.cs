@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -16,42 +16,56 @@ public class MovementController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererRight;
     private AnimatedSpriteRenderer activeSpriteRenderer;
 
-    // Input System variables
+    // Input System
     private PlayerInput playerInput;
     private InputAction moveAction;
+    private InputAction dropBombAction;
+
+    // Tham chiếu tới BombController
+    public BombController bombController;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (rb == null)
-        {
-            Debug.LogError("Rigidbody2D component missing!", this);
-            return;
-        }
-
         playerInput = GetComponent<PlayerInput>();
-        if (playerInput == null)
-        {
-            Debug.LogError("PlayerInput component missing!", this);
-            return;
-        }
 
+        // Lấy đúng action theo tên bạn đã đặt trong InputActions (putBomb)
         moveAction = playerInput.actions.FindAction("Move");
-        if (moveAction == null)
+        dropBombAction = playerInput.actions.FindAction("putBomb");
+
+        // Kiểm tra null
+        if (dropBombAction == null)
         {
-            Debug.LogError("Move action not found in Input Actions!", this);
-            return;
+            Debug.LogError("Không tìm thấy InputAction tên 'putBomb'. Vui lòng kiểm tra lại InputActions.");
         }
 
         activeSpriteRenderer = spriteRendererDown ?? GetComponentInChildren<AnimatedSpriteRenderer>();
     }
 
+    private void OnEnable()
+    {
+        moveAction?.Enable();
+        dropBombAction?.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveAction?.Disable();
+        dropBombAction?.Disable();
+    }
+
     private void Update()
     {
-        // Read input from Input System
+        // Đặt bomb nếu nhấn space
+        if (dropBombAction != null && dropBombAction.triggered && bombController != null)
+        {
+        
+            Debug.Log("Đã nhấn Space - Đặt bomb");
+        }
+
+        // Di chuyển
         Vector2 input = moveAction.ReadValue<Vector2>();
 
-        // Determine direction and animation
         if (input.y > 0)
         {
             SetDirection(Vector2.up, spriteRendererUp);
