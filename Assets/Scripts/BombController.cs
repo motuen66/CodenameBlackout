@@ -78,7 +78,7 @@ public class BombController : MonoBehaviour
             Mathf.Floor(currentPlayerPosition.y) + 0.5f
         );
 
-        // Instantiate a bomb prefab at the calculated center of the grid cell.
+        // Instantiate a bomb prefab at the calculated center of the grid cell.   
         GameObject bomb = Instantiate(bombPrefab, bombPlacementPosition, Quaternion.identity);
         bombsRemaining--; // Decrease the count of bombs available to place.
 
