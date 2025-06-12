@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cac9d3cc5e4ab754e842f9e92827df3d
+guid: e28f14b8dd2a97d4eb358525c6c8965c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1617834536361884785
-    second: ExplosionAnim_EndUp_v1_0
+      213: 5086572860714214122
+    second: Free-Top-Down-Bushes-Pixel-Art2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ExplosionAnim_EndUp_v1_0
+      name: Free-Top-Down-Bushes-Pixel-Art2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 24
+        x: 57
+        y: 889
+        width: 215
+        height: 220
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 17c753d60f3b37610800000000000000
-      internalID: 1617834536361884785
+      spriteID: cf6c53421a9808e4cb4521b1deb0ecd3
+      internalID: -354116260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Free-Top-Down-Bushes-Pixel-Art2_1
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 940
+        width: 101
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92f670bc1ede7347b8263518ccf498e
+      internalID: -1321003373
       vertices: []
       indices: 
       edges: []
@@ -125,7 +147,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7e8f3dffae54b9b47a2d42afcaeb239b
     internalID: 0
     vertices: []
     indices: 
@@ -133,9 +155,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: False
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"autoSlicingMethod":1,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      ExplosionAnim_EndUp_v1_0: 1617834536361884785
+      Free-Top-Down-Bushes-Pixel-Art2_0: -354116260
+      Free-Top-Down-Bushes-Pixel-Art2_1: -1321003373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

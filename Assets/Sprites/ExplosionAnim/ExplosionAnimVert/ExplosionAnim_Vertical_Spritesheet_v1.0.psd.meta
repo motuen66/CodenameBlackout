@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ExplosionAnim_Vertical_Spritesheet_v1.0_0: -9004596215212766191
+      ExplosionAnim_Vertical_Spritesheet_v1.0_1: 3562627264246625912
+      ExplosionAnim_Vertical_Spritesheet_v1.0_2: -7705583085175002604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

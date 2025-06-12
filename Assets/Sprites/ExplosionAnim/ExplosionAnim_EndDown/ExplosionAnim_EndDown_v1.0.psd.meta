@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ExplosionAnim_EndDown_v1.0_0: -3510556935677849418
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
