@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -187,6 +191,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -483,6 +491,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.4370003
@@ -544,6 +556,10 @@ PrefabInstance:
     - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_Name
       value: TopWall (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -720,6 +736,10 @@ PrefabInstance:
     - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_Name
       value: RightWall (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1100,6 +1120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWall (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
       value: 0.9989939
@@ -1204,6 +1228,10 @@ PrefabInstance:
     - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Name
       value: DestructibleBlock 2 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1329,6 +1357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00040006638
@@ -1452,6 +1484,10 @@ PrefabInstance:
     - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_Name
       value: TopWall (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1671,6 +1707,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.9995995
@@ -1728,6 +1768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.4370003
@@ -1784,6 +1828,10 @@ PrefabInstance:
     - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_Name
       value: BottomWall (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1851,6 +1899,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1970,6 +2022,10 @@ PrefabInstance:
     - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Name
       value: DestructibleBlock 2 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2106,6 +2162,10 @@ PrefabInstance:
     - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_Name
       value: RightWall (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2283,6 +2343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWall (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
       value: 0.9989939
@@ -2347,6 +2411,10 @@ PrefabInstance:
     - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Name
       value: LeftWall (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
@@ -2417,6 +2485,10 @@ PrefabInstance:
     - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Name
       value: LeftWall (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 6517812062890236021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2551,6 +2623,10 @@ PrefabInstance:
     - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_Name
       value: TopWall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2737,6 +2813,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3175,6 +3255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.999599
@@ -3271,6 +3355,10 @@ PrefabInstance:
     - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Name
       value: DestructibleBlock 2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4004,216 +4092,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7401963436920715865, guid: f4257d6fd7951de40a272f2c5589dc14, type: 3}
   m_PrefabInstance: {fileID: 2010025645}
   m_PrefabAsset: {fileID: 0}
---- !u!213 &568925727
-Sprite:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Rect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 4
-    height: 4
-  m_Offset: {x: 0, y: 0}
-  m_Border: {x: 0, y: 0, z: 0, w: 0}
-  m_PixelsToUnits: 4
-  m_Pivot: {x: 0.5, y: 0.5}
-  m_Extrude: 0
-  m_IsPolygon: 0
-  m_PackingTag: 
-  m_RenderDataKey:
-    00000000000000000000000000000000: 0
-  m_AtlasTags: []
-  m_SpriteAtlas: {fileID: 0}
-  m_RD:
-    serializedVersion: 3
-    texture: {fileID: 0}
-    alphaTexture: {fileID: 0}
-    secondaryTextures: []
-    m_SubMeshes:
-    - serializedVersion: 2
-      firstByte: 0
-      indexCount: 6
-      topology: 0
-      baseVertex: 0
-      firstVertex: 0
-      vertexCount: 4
-      localAABB:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-    m_IndexBuffer: 000001000200020001000300
-    m_VertexData:
-      serializedVersion: 3
-      m_VertexCount: 4
-      m_Channels:
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 3
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 1
-        offset: 0
-        format: 0
-        dimension: 2
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      m_DataSize: 80
-      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf00000000000000000000803f0000803f0000803f00000000000000000000803f00000000
-    m_Bindpose: []
-    textureRect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 4
-      height: 4
-    textureRectOffset: {x: 0, y: 0}
-    atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
-    uvTransform: {x: 4, y: 2, z: 4, w: 2}
-    downscaleMultiplier: 1
-  m_AtlasRD:
-    serializedVersion: 3
-    texture: {fileID: 0}
-    alphaTexture: {fileID: 0}
-    secondaryTextures: []
-    m_SubMeshes:
-    - serializedVersion: 2
-      firstByte: 0
-      indexCount: 6
-      topology: 0
-      baseVertex: 0
-      firstVertex: 0
-      vertexCount: 4
-      localAABB:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-    m_IndexBuffer: 000001000200020001000300
-    m_VertexData:
-      serializedVersion: 3
-      m_VertexCount: 4
-      m_Channels:
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 3
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 1
-        offset: 0
-        format: 0
-        dimension: 2
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      m_DataSize: 80
-      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf00000000000000000000803f0000803f0000803f00000000000000000000803f00000000
-    m_Bindpose: []
-    textureRect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 4
-      height: 4
-    textureRectOffset: {x: 0, y: 0}
-    atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
-    uvTransform: {x: 4, y: 2, z: 4, w: 2}
-    downscaleMultiplier: 1
-  m_PhysicsShape: []
-  m_Bones: []
-  m_ScriptableObjects: []
-  m_SpriteID: 
 --- !u!1001 &577306939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4317,6 +4195,10 @@ PrefabInstance:
     - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Name
       value: LeftWall (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 6517812062890236021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4553,6 +4435,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.999599
@@ -4708,6 +4594,10 @@ PrefabInstance:
     - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Name
       value: LeftWall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
@@ -5157,6 +5047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.002
@@ -5407,6 +5301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5629997
@@ -5619,6 +5517,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWall (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
       value: 0.9989939
@@ -5688,6 +5590,10 @@ PrefabInstance:
     - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_Name
       value: TopWall (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5839,6 +5745,10 @@ PrefabInstance:
     - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_Name
       value: RightWall (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6095,6 +6005,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWall (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0004015
@@ -6192,6 +6106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6249,6 +6167,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6265,6 +6187,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6455,6 +6381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6493,6 +6423,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6550,6 +6484,10 @@ PrefabInstance:
     - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_Name
       value: TopWall (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6653,6 +6591,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6669,6 +6611,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6726,6 +6672,10 @@ PrefabInstance:
     - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_Name
       value: BottomWall (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6880,6 +6830,10 @@ PrefabInstance:
     - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Name
       value: LeftWall (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
@@ -7174,6 +7128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.437
@@ -7231,6 +7189,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.001999
@@ -7287,6 +7249,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7349,6 +7315,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7685,6 +7655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7741,6 +7715,10 @@ PrefabInstance:
     - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Name
       value: DestructibleBlock 2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7984,6 +7962,10 @@ PrefabInstance:
     - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Name
       value: LeftWall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
@@ -8586,6 +8568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.4370003
@@ -8647,6 +8633,10 @@ PrefabInstance:
     - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_Name
       value: TopWall (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8801,6 +8791,10 @@ PrefabInstance:
     - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_Name
       value: RightWall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8995,6 +8989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.9995995
@@ -9184,6 +9182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9237,6 +9239,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9468,6 +9474,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.001999
@@ -9574,6 +9584,10 @@ PrefabInstance:
     - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Name
       value: DestructibleBlock 2 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9791,6 +9805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.4370003
@@ -9950,6 +9968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWall (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
       value: 0.9989939
@@ -10072,6 +10094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.437
@@ -10133,6 +10159,10 @@ PrefabInstance:
     - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_Name
       value: BottomWall (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10262,6 +10292,10 @@ PrefabInstance:
     - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Name
       value: DestructibleBlock 2 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10600,6 +10634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWall (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
       value: 0.9989939
@@ -10664,6 +10702,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11241,6 +11283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.99959993
@@ -11412,6 +11458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.437
@@ -11468,6 +11518,10 @@ PrefabInstance:
     - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Name
       value: LeftWall (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
@@ -11533,6 +11587,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11953,6 +12011,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.001999
@@ -12050,6 +12112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12129,6 +12195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.9995995
@@ -12185,6 +12255,10 @@ PrefabInstance:
     - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_Name
       value: RightWall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12406,6 +12480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.9996
@@ -12467,6 +12545,10 @@ PrefabInstance:
     - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Name
       value: LeftWall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
@@ -12902,6 +12984,10 @@ PrefabInstance:
     - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_Name
       value: TopWall (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13432,6 +13518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13470,6 +13560,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13779,6 +13873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0004015
@@ -13881,6 +13979,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13942,6 +14044,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.4370003
@@ -13999,6 +14105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.002
@@ -14055,6 +14165,10 @@ PrefabInstance:
     - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_Name
       value: BottomWall (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14158,6 +14272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14260,40 +14378,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2586320996992611965, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
   m_PrefabInstance: {fileID: 1575030991}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1679249780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 568925727}
-  m_Color: {r: 0.89787596, g: 0.6205439, b: 0.67159575, a: 1}
-  m_Transform:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 3
-  m_ColliderType: 1
 --- !u!1001 &1690919556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14460,6 +14544,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14488,7 +14576,7 @@ GameObject:
   - component: {fileID: 1703463665}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14759,6 +14847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2ffcd825b19f94894c87b8bd8c5461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 1151063396324798887, guid: 0b13f5c8b45b711468606f2073fbe2cc, type: 3}
   bombPrefab: {fileID: 9066460438072796987, guid: 861e0869d44603f4e93f166fb7b88791, type: 3}
   bombFuseTime: 3
   bombAmount: 1
@@ -14945,6 +15034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.4369998
@@ -15001,6 +15094,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15064,6 +15161,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.437
@@ -15120,6 +15221,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15178,6 +15283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0004001
@@ -15234,6 +15343,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15306,6 +15419,10 @@ PrefabInstance:
     - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_Name
       value: RightWall (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15482,6 +15599,10 @@ PrefabInstance:
     - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_Name
       value: BottomWall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15800,6 +15921,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.001999
@@ -15896,6 +16021,10 @@ PrefabInstance:
     - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Name
       value: DestructibleBlock 2 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16016,6 +16145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
       value: 0.9989939
@@ -16103,6 +16236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.0019989
@@ -16159,6 +16296,10 @@ PrefabInstance:
     - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_Name
       value: RightWall (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18070,13 +18211,13 @@ Tilemap:
   - first: {x: -9, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 11
+      m_TileIndex: 11
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
-      m_AllTileFlags: 1073741827
+      m_AllTileFlags: 1073741825
   - first: {x: -8, y: -2, z: 0}
     second:
       serializedVersion: 2
@@ -18930,13 +19071,13 @@ Tilemap:
   - first: {x: -8, y: 3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 11
+      m_TileIndex: 11
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
-      m_AllTileFlags: 1073741827
+      m_AllTileFlags: 1073741825
   - first: {x: -7, y: 3, z: 0}
     second:
       serializedVersion: 2
@@ -19221,8 +19362,8 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 2
-    m_Data: {fileID: 1679249780}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -19241,7 +19382,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 144
     m_Data: {fileID: 11400000, guid: afacf241208ed9f4c806f8e3f9caae55, type: 2}
-  - m_RefCount: 143
+  - m_RefCount: 145
     m_Data: {fileID: 11400000, guid: 48fcbec8e83b5f94798be3543ff2fd53, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -19262,12 +19403,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 144
     m_Data: {fileID: 435642106, guid: 75e4cd8af4d3d9f458c06d5c433c7bda, type: 3}
-  - m_RefCount: 143
+  - m_RefCount: 145
     m_Data: {fileID: -2296356, guid: 75e4cd8af4d3d9f458c06d5c433c7bda, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 2
-    m_Data: {fileID: 568925727}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 289
     m_Data:
@@ -19306,12 +19447,12 @@ Tilemap:
       e32: 6.38e-43
       e33: 6.35e-43
   m_TileColorArray:
-  - m_RefCount: 287
+  - m_RefCount: 289
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  - m_RefCount: 2
-    m_Data: {r: 0.89787596, g: 0.6205439, b: 0.67159575, a: 1}
   - m_RefCount: 0
-    m_Data: {r: 6.5396e-41, g: 6.5396e-41, b: 6.5396e-41, a: 6.5396e-41}
+    m_Data: {r: 1.55124e-40, g: 1.55124e-40, b: 1.55124e-40, a: 1.55124e-40}
+  - m_RefCount: 0
+    m_Data: {r: 1.55124e-40, g: 1.55124e-40, b: 1.55124e-40, a: 1.55124e-40}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -19374,9 +19515,9 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -13, y: 5}
-  - {x: -13.000001, y: -14}
-  - {x: 5.999999, y: -14}
-  - {x: 6, y: 5}
+  - {x: -13.001165, y: -12.002751}
+  - {x: 4.001478, y: -12.001483}
+  - {x: 4.0008574, y: 5.000473}
   - {x: -13, y: 5}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
@@ -19702,6 +19843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWall (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
       value: 0.9989939
@@ -19983,6 +20128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20134,6 +20283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.002
@@ -20283,6 +20436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.437
@@ -20344,6 +20501,10 @@ PrefabInstance:
     - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_Name
       value: RightWall (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20504,6 +20665,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20542,6 +20707,10 @@ PrefabInstance:
     - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_Name
       value: BottomWall (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20692,6 +20861,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0004015
@@ -20789,6 +20962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20885,6 +21062,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible 3 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.4370003
@@ -20942,6 +21123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0004015
@@ -20998,6 +21183,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21153,6 +21342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBlock 2 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21262,6 +21455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWall (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0004015
@@ -21324,6 +21521,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWall (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0004015
@@ -21385,6 +21586,10 @@ PrefabInstance:
     - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_Name
       value: BottomWall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21598,6 +21803,10 @@ PrefabInstance:
     - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Name
       value: LeftWall (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 3030345725917250021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_Size.y
@@ -21913,6 +22122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWall (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0004015
@@ -21992,6 +22205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.001999
@@ -22053,6 +22270,10 @@ PrefabInstance:
     - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_Name
       value: RightWall (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22227,6 +22448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWall
       objectReference: {fileID: 0}
+    - target: {fileID: 1534697681883756082, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 6517812062890236021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.999001
@@ -22283,6 +22508,10 @@ PrefabInstance:
     - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_Name
       value: TopWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749453638140840377, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
       objectReference: {fileID: 0}
     - target: {fileID: 7416235504576294394, guid: 42dcbc1ff56afa94fb8373d1c0b51abd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22341,6 +22570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWall
       objectReference: {fileID: 0}
+    - target: {fileID: 3770245968338925669, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.001999
@@ -22398,6 +22631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWall
       objectReference: {fileID: 0}
+    - target: {fileID: 5447845783539529375, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
+      propertyPath: m_TagString
+      value: Indestructible
+      objectReference: {fileID: 0}
     - target: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0004005
@@ -22454,6 +22691,10 @@ PrefabInstance:
     - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_Name
       value: Destructible 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22551,6 +22792,10 @@ PrefabInstance:
     - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Name
       value: DestructibleBlock 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510826812863897189, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
