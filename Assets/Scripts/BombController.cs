@@ -10,6 +10,7 @@ public class BombController : MonoBehaviour
     public PlayerInputActions inputActions;
 
     [Header("Bomb Settings")]
+    public GameObject explosionPrefab; // Add this line under Bomb Settings
     public GameObject bombPrefab; // Prefab of the bomb object
     public float bombFuseTime = 3f; // Time until the bomb "explodes" (used for despawning for now)
     public int bombAmount = 1; // Maximum number of bombs the player can place simultaneously
@@ -71,8 +72,6 @@ public class BombController : MonoBehaviour
         Vector2 currentPlayerPosition = transform.position;
 
         // Calculate the center position of the grid cell the player is currently on.
-        // Mathf.Floor rounds down to the nearest integer, giving the bottom-left corner of the grid cell.
-        // Adding 0.5f then shifts the position to the center of that grid cell (assuming 1x1 unit grid cells).
         Vector2 bombPlacementPosition = new Vector2(
             Mathf.Floor(currentPlayerPosition.x) + 0.5f,
             Mathf.Floor(currentPlayerPosition.y) + 0.5f
@@ -85,8 +84,13 @@ public class BombController : MonoBehaviour
         // Wait for the bomb's fuse time.
         yield return new WaitForSeconds(bombFuseTime);
 
+        // Instantiate the explosion at the bomb's position (not the player's position)
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, bomb.transform.position, Quaternion.identity);
+        }
+
         // Destroy the bomb GameObject after the fuse time expires.
-        // (In a full game, explosion logic would be triggered here).
         Destroy(bomb);
         bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
     }
