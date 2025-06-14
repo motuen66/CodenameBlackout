@@ -447,7 +447,20 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PowerUpAnim_Speed_Spritesheet_v.1.0_0: -2240264559197138376
+      PowerUpAnim_Speed_Spritesheet_v.1.0_1: -3195575478310216817
+      PowerUpAnim_Speed_Spritesheet_v.1.0_10: -693126111842307348
+      PowerUpAnim_Speed_Spritesheet_v.1.0_11: -7509335261321327132
+      PowerUpAnim_Speed_Spritesheet_v.1.0_12: 3829513761045845257
+      PowerUpAnim_Speed_Spritesheet_v.1.0_2: -8269499463384239955
+      PowerUpAnim_Speed_Spritesheet_v.1.0_3: -2611861792084133533
+      PowerUpAnim_Speed_Spritesheet_v.1.0_4: 9039191784556191356
+      PowerUpAnim_Speed_Spritesheet_v.1.0_5: 5870061586454065498
+      PowerUpAnim_Speed_Spritesheet_v.1.0_6: 1491323682175895240
+      PowerUpAnim_Speed_Spritesheet_v.1.0_7: 8034468573288832904
+      PowerUpAnim_Speed_Spritesheet_v.1.0_8: 1557447343878158433
+      PowerUpAnim_Speed_Spritesheet_v.1.0_9: -5642620901734054846
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

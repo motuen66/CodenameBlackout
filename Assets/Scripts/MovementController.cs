@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class MovementController : MonoBehaviour
 {
+    public static MovementController Instance { get; private set; }
     private Rigidbody2D rb;
     private Vector2 direction = Vector2.down;
     public float speed = 5f;
@@ -19,6 +20,14 @@ public class MovementController : MonoBehaviour
     // Input System variables
     private PlayerInput playerInput;
     private InputAction moveAction;
+
+    private void Start()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     private void Awake()
     {

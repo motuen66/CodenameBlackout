@@ -99,6 +99,7 @@ using UnityEngine;
 
 public class ExplosionPart : MonoBehaviour
 {
+    public static ExplosionPart Instance { get; private set; }
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
@@ -110,6 +111,14 @@ public class ExplosionPart : MonoBehaviour
 
     // Dùng để lưu các vị trí đã spawn item
     private static HashSet<Vector2> spawnedPositions = new HashSet<Vector2>();
+
+    private void Start()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     void Awake()
     {
@@ -161,7 +170,6 @@ public class ExplosionPart : MonoBehaviour
         if (itemPrefab != null)
         {
             Instantiate(itemPrefab, adjustedPos, Quaternion.identity);
-            Debug.Log("Spawned item: " + itemStr + " at " + adjustedPos);
         }
     }
 

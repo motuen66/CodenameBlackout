@@ -11,9 +11,10 @@ public class BombController : MonoBehaviour
 
     [Header("Bomb Settings")]
     public GameObject explosionPrefab; // Add this line under Bomb Settings
+    public GameObject explosionExtraRangePrefab;
     public GameObject bombPrefab; // Prefab of the bomb object
     public float bombFuseTime = 3f; // Time until the bomb "explodes" (used for despawning for now)
-    public int bombAmount = 1; // Maximum number of bombs the player can place simultaneously
+    public int bombAmount = 2; // Maximum number of bombs the player can place simultaneously
     private int bombsRemaining; // Current count of bombs the player can still place
 
     private void Awake()
@@ -77,9 +78,21 @@ public class BombController : MonoBehaviour
             Mathf.Floor(currentPlayerPosition.y) + 0.5f
         );
 
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(bombPlacementPosition, 0.2f);
+        //foreach (var col in colliders)
+        //{
+        //    if (col.CompareTag("Bomb"))
+        //    {
+        //        Debug.Log("Đã có bom tại vị trí này, không đặt thêm.");
+        //        yield break;
+        //    }
+        //}
+
         // Instantiate a bomb prefab at the calculated center of the grid cell.   
         GameObject bomb = Instantiate(bombPrefab, bombPlacementPosition, Quaternion.identity);
+        //bomb.tag = "Bomb";
         bombsRemaining--; // Decrease the count of bombs available to place.
+        //Debug.Log($"Bom đã đặt. bombsRemaining: {bombsRemaining}");
 
         // Wait for the bomb's fuse time.
         yield return new WaitForSeconds(bombFuseTime);
@@ -93,5 +106,29 @@ public class BombController : MonoBehaviour
         // Destroy the bomb GameObject after the fuse time expires.
         Destroy(bomb);
         bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ExplosionPart explosionPart = ExplosionPart.Instance;
+        string touchObjectName = collision.gameObject.name.Split("(Clone)")[0];
+
+        //Debug.Log(touchObjectName + "111");
+        //Debug.Log(explosionPart.ItemExtraBombPrefap.name + "111");
+        if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
+        {
+            bombAmount++;
+            Destroy(collision.gameObject);
+        }
+        else if (touchObjectName == explosionPart.ItemExtraRangePrefap.name)
+        {
+            //explosionPrefab = explosionPart.explosionExtraRangePrefab1;
+            Destroy(collision.gameObject);
+        }
+        else if (touchObjectName == explosionPart.ItemSpiritPrefab.name)
+        {
+            MovementController.Instance.speed += 3f;
+            Destroy(collision.gameObject);
+        }
     }
 }

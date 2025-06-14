@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PowerUpAnim_DynamiteCount_v.1.0_0: 6380894243213138492
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
