@@ -4,6 +4,7 @@ public class ExplosionPart : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private static bool playerDead = false; // Biến static để kiểm soát log
 
     void Awake()
     {
@@ -34,6 +35,14 @@ public class ExplosionPart : MonoBehaviour
         {
             // Phá hủy object destructible
             Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Player"))
+        {
+            if (!playerDead)
+            {
+                Debug.Log("da chet");
+                playerDead = true;
+            }
         }
     }
 }
