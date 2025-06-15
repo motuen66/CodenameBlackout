@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
-    public enum PowerUpItemsEnum
+    public enum ItemType
     {
-        ItemExtraRange,
-        ItemBombPlus
+        BombPlus,
+        BombExtraRange,
+        SpeedUp,
     }
 }

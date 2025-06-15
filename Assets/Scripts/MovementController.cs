@@ -1,3 +1,4 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,8 @@ public class MovementController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 direction = Vector2.down;
     public float speed = 5f;
+    public float maxSpeed = 8f;
+    public float minSpeed = 5f;
 
     [Header("Sprites")]
     public AnimatedSpriteRenderer spriteRendererUp;
