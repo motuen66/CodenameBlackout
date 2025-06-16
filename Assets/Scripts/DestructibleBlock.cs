@@ -9,12 +9,14 @@ public class DestructibleBlock : MonoBehaviour
     {
         Debug.Log(gameObject.name + " is destroyed!");
 
-        // Call RefreshGrid on the PathfindingGridManager to update the grid.
+        // Call RefreshGridData on the PathfindingGridManager to update the grid.
         // Always check if Instance != null to avoid errors if the GridManager was destroyed earlier.
         // Also check Application.isPlaying to prevent execution when exiting the editor.
         if (Application.isPlaying && PathfindingGridManager.Instance != null)
         {
-            PathfindingGridManager.Instance.RefreshGrid();
+            // --- FIX APPLIED HERE: Changed from RefreshGrid() to RefreshGridData() ---
+            PathfindingGridManager.Instance.RefreshGridData();
+            // --- END OF FIX ---
         }
         else if (Application.isPlaying) // Log a warning if the Instance is null during Play Mode
         {
@@ -23,7 +25,7 @@ public class DestructibleBlock : MonoBehaviour
 
         // Destroy this GameObject immediately.
         // You can uncomment the line below to actually destroy the block.
-        // Destroy(gameObject);
+        Destroy(gameObject); // Uncommented to ensure the block is actually destroyed
     }
 
     // Optional: Use OnTriggerEnter2D if the bomb explosion area uses a Trigger Collider
@@ -48,7 +50,8 @@ public class DestructibleBlock : MonoBehaviour
         {
             if (PathfindingGridManager.Instance != null)
             {
-                PathfindingGridManager.Instance.RefreshGrid();
+                // Ensure to call RefreshGridData() here as well if you uncomment this
+                // PathfindingGridManager.Instance.RefreshGridData();
             }
         }
     }

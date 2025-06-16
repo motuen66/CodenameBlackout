@@ -2,42 +2,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using KwaaktjePathfinder2D;
-using UnityEngine.Rendering.Universal; // RẤT QUAN TRỌNG: Thêm dòng này để sử dụng Light2D
+using UnityEngine.Rendering.Universal; // IMPORTANT: Add this line to use Light2D
 
 public class GuardPathfindingPatrol : MonoBehaviour
 {
     // --- Public Configuration (Set in Inspector) ---
-    public List<Transform> waypoints; // Danh sách các waypoint tuần tra
-    public float moveSpeed = 1.5f;   // Tốc độ di chuyển
-    public float waitTime = 1f;      // Thời gian chờ ở mỗi waypoint
-    public float cellReachThreshold = 0.1f; // Ngưỡng để xác định đã đến giữa ô hay waypoint
+    public List<Transform> waypoints; // List of patrol waypoints
+    public float moveSpeed = 1.5f;   // Movement speed
+    public float waitTime = 1f;      // Time to wait at each waypoint
+    public float cellReachThreshold = 0.1f; // Threshold to determine if the center of a cell or waypoint has been reached
 
     [Header("Detection")]
-    public float detectionRadius = 0.5f; // Bán kính phát hiện tổng quát (vẫn giữ lại nếu bạn muốn dùng cho mục đích khác)
-    public LayerMask playerLayer;        // Layer của Player
+    public float detectionRadius = 0.5f; // General detection radius (kept if you want to use it for other purposes)
+    public LayerMask playerLayer;        // Layer of the Player
 
     [Header("Vision Cone")]
-    public float fieldOfViewAngle = 90f; // Góc nhìn hình nón
-    public float viewDistance = 5f;      // Tầm nhìn xa của nón
-    public LayerMask viewObstacleLayer;  // Layer của các vật thể cản tầm nhìn (tường, thùng)
+    public float fieldOfViewAngle = 90f; // Vision cone angle
+    public float viewDistance = 5f;      // Vision cone distance
+    public LayerMask viewObstacleLayer;  // Layer of objects that block vision (walls, crates)
 
     [Header("Vision Cone Visual")]
-    public UnityEngine.Rendering.Universal.Light2D guardLight; // Kéo component Light2D của Guard vào đây
+    public UnityEngine.Rendering.Universal.Light2D guardLight; // Drag the Guard's Light2D component here
 
     // --- Private Variables ---
     private Rigidbody2D rb;
     private Animator animator;
     private int currentWaypointIndex = 0;
     private bool isWaiting = false;
-    private bool noReachableWaypoints = false; // Cờ theo dõi nếu không có waypoint nào đến được
+    private bool noReachableWaypoints = false; // Flag to track if no waypoints are reachable
 
-    private List<Vector2Int> currentPath = new List<Vector2Int>(); // Đường đi hiện tại theo ô lưới
-    private int currentPathIndex = 0;                             // Chỉ số ô hiện tại trên đường đi
+    private List<Vector2Int> currentPath = new List<Vector2Int>(); // Current path in grid cells
+    private int currentPathIndex = 0;                             // Current cell index on the path
 
-    private Pathfinder2D pathfinder; // Tham chiếu đến đối tượng tìm đường
-    private PathfindingGridManager gridManager; // Tham chiếu đến quản lý lưới
+    private Pathfinder2D pathfinder; // Reference to the pathfinding object
+    private PathfindingGridManager gridManager; // Reference to the grid manager
 
-    private Vector2 lastFacingDirection = Vector2.down; // Hướng nhìn cuối cùng của Guard, mặc định là xuống
+    private Vector2 lastFacingDirection = Vector2.down; // Last facing direction of the Guard, defaults to down
 
     void Awake()
     {
@@ -50,7 +50,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
         animator = GetComponent<Animator>();
         if (animator == null) Debug.LogError("Guard Animator component missing!", this);
 
-        // Lấy Light2D tự động nếu chưa được gán trong Inspector (nếu nó là child)
+        // Get Light2D automatically if not assigned in Inspector (if it's a child)
         if (guardLight == null)
         {
             guardLight = GetComponentInChildren<UnityEngine.Rendering.Universal.Light2D>();
@@ -63,19 +63,19 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
     void OnEnable()
     {
-        // Đăng ký lắng nghe sự kiện khi lưới tìm đường được làm mới
+        // Subscribe to the grid refresh event
         PathfindingGridManager.OnGridRefreshed += HandleGridRefreshed;
     }
 
     void OnDisable()
     {
-        // Hủy đăng ký sự kiện để tránh rò rỉ bộ nhớ
+        // Unsubscribe from the event to prevent memory leaks
         PathfindingGridManager.OnGridRefreshed -= HandleGridRefreshed;
     }
 
     void Start()
     {
-        // Kiểm tra tính hợp lệ của danh sách waypoints
+        // Check validity of the waypoints list
         if (waypoints == null || waypoints.Count == 0)
         {
             Debug.LogError("No waypoints assigned for guard " + gameObject.name + ". Please assign waypoints in the Inspector.", this);
@@ -95,16 +95,17 @@ public class GuardPathfindingPatrol : MonoBehaviour
             }
         }
 
-        // Lấy tham chiếu đến PathfindingGridManager trong Scene
-        gridManager = Object.FindFirstObjectByType<PathfindingGridManager>();
+        // Get reference to PathfindingGridManager in the Scene
+        // USING SINGLETON INSTANCE
+        gridManager = PathfindingGridManager.Instance; // Get instance via singleton
         if (gridManager == null)
         {
-            Debug.LogError("PathfindingGridManager not found in scene! Make sure it exists.", this);
+            Debug.LogError("PathfindingGridManager not found (or not properly initialized) in scene! Make sure it exists and has the script attached.", this);
             enabled = false;
             return;
         }
 
-        // Lấy tham chiếu đến Pathfinder2D từ GridManager
+        // Get reference to Pathfinder2D from GridManager
         if (PathfindingGridManager.InstancePathfinder == null)
         {
             Debug.LogError("PathfindingGridManager.InstancePathfinder is null. Make sure PathfindingGridManager is initialized first!", this);
@@ -113,88 +114,88 @@ public class GuardPathfindingPatrol : MonoBehaviour
         }
         pathfinder = PathfindingGridManager.InstancePathfinder;
 
-        // Bắt đầu tuần tra từ waypoint đầu tiên có thể đến được
+        // Start patrolling from the first reachable waypoint
         FindAndStartNextReachableWaypointPath(false);
     }
 
     void Update()
     {
-        // Cập nhật animation và hướng nhìn dựa trên vận tốc hiện tại của Guard
+        // Update animation and facing direction based on the Guard's current velocity
         Vector2 currentVelocity = rb.linearVelocity;
-        if (currentVelocity.magnitude > 0.05f) // Nếu Guard đang di chuyển đủ nhanh
+        if (currentVelocity.magnitude > 0.05f) // If the Guard is moving fast enough
         {
             animator.SetBool("IsMoving", true);
             animator.SetFloat("MoveX", currentVelocity.x);
             animator.SetFloat("MoveY", currentVelocity.y);
 
-            // Cập nhật hướng nhìn cuối cùng chỉ khi Guard đang di chuyển
+            // Update the last facing direction only when the Guard is moving
             lastFacingDirection = currentVelocity.normalized;
         }
         else
         {
             animator.SetBool("IsMoving", false);
-            // Giữ nguyên lastFacingDirection khi đứng yên để hướng nhìn không bị reset
+            // Keep lastFacingDirection when stationary so the facing direction isn't reset
         }
 
-        // QUAN TRỌNG: Cập nhật hướng của Light2D của Guard
+        // IMPORTANT: Update the direction of the Guard's Light2D
         if (guardLight != null)
         {
             float angle = Mathf.Atan2(lastFacingDirection.y, lastFacingDirection.x) * Mathf.Rad2Deg - 90f;
             guardLight.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        // Thực hiện logic phát hiện người chơi
+        // Execute player detection logic
         DetectPlayer();
     }
 
     void FixedUpdate()
     {
-        // Nếu Guard đang chờ hoặc không có waypoint nào đến được, dừng di chuyển
+        // If the Guard is waiting or no waypoints are reachable, stop moving
         if (isWaiting || noReachableWaypoints)
         {
             rb.linearVelocity = Vector2.zero;
             return;
         }
 
-        // Nếu đường đi hiện tại đã kết thúc hoặc không tồn tại
+        // If the current path has ended or doesn't exist
         if (currentPath == null || currentPath.Count == 0 || currentPathIndex >= currentPath.Count)
         {
-            // Kiểm tra xem Guard đã đến waypoint đích cuối cùng chưa
+            // Check if the Guard has reached the final destination waypoint
             if (waypoints != null && waypoints.Count > currentWaypointIndex && waypoints[currentWaypointIndex] != null &&
                 Vector2.Distance(rb.position, waypoints[currentWaypointIndex].position) < cellReachThreshold)
             {
                 Debug.Log($"[Guard {gameObject.name}] Reached final waypoint {currentWaypointIndex}. Starting wait.");
-                StartCoroutine(WaitAtWaypoint()); // Bắt đầu chờ
+                StartCoroutine(WaitAtWaypoint()); // Start waiting
             }
             else
             {
-                // Nếu đường đi hết nhưng chưa đến waypoint (ví dụ: bị chặn giữa chừng), thử tìm đường lại
+                // If the path is exhausted but the waypoint hasn't been reached (e.g., blocked midway), try to find a path again
                 rb.linearVelocity = Vector2.zero;
                 animator.SetBool("IsMoving", false);
                 Debug.LogWarning($"[Guard {gameObject.name}] Path exhausted or blocked before reaching final waypoint. Re-evaluating path.", this);
-                FindAndStartNextReachableWaypointPath(true); // Tìm lại đường
+                FindAndStartNextReachableWaypointPath(true); // Find path again
             }
             return;
         }
 
-        // Di chuyển Guard đến ô tiếp theo trên đường đi
+        // Move the Guard to the next cell on the path
         Vector2Int targetCell = currentPath[currentPathIndex];
         Vector3 targetWorldPosition = PathfindingGridManager.GridCellToWorldCenter(targetCell, gridManager.managerCellSize, gridManager.gridOrigin);
 
         Vector2 moveDirection = ((Vector2)targetWorldPosition - rb.position).normalized;
         rb.linearVelocity = moveDirection * moveSpeed;
 
-        // Nếu Guard đã đến gần ô đích hiện tại
+        // If the Guard is close to the current target cell
         if (Vector2.Distance(rb.position, targetWorldPosition) < cellReachThreshold)
         {
-            rb.position = targetWorldPosition; // Đặt chính xác vào giữa ô
-            currentPathIndex++; // Chuyển sang ô tiếp theo
+            rb.position = targetWorldPosition; // Snap to the center of the cell
+            currentPathIndex++; // Move to the next cell
 
-            // Nếu đã đi hết các ô trong đường đi hiện tại
+            // If all cells in the current path have been traversed
             if (currentPathIndex >= currentPath.Count)
             {
                 rb.linearVelocity = Vector2.zero;
-                // Kiểm tra lại xem đã đến waypoint chính xác chưa
+                // Re-check if the exact waypoint has been reached
                 if (waypoints != null && waypoints.Count > currentWaypointIndex && waypoints[currentWaypointIndex] != null &&
                     Vector2.Distance(rb.position, waypoints[currentWaypointIndex].position) < cellReachThreshold)
                 {
@@ -211,10 +212,10 @@ public class GuardPathfindingPatrol : MonoBehaviour
     }
 
     /// <summary>
-    /// Cố gắng tìm đường đến một vị trí đích.
+    /// Attempts to find a path to a target world position.
     /// </summary>
-    /// <param name="targetWorldPos">Vị trí thế giới của đích.</param>
-    /// <returns>True nếu tìm được đường, False nếu không.</returns>
+    /// <param name="targetWorldPos">The world position of the target.</param>
+    /// <returns>True if a path is found, False otherwise.</returns>
     private bool AttemptToFindPath(Vector3 targetWorldPos)
     {
         if (pathfinder == null || gridManager == null)
@@ -231,12 +232,12 @@ public class GuardPathfindingPatrol : MonoBehaviour
         if (pathResult.Status == Pathfinder2DResultStatus.SUCCESS && pathResult.Path.Count > 0)
         {
             currentPath = new List<Vector2Int>(pathResult.Path);
-            currentPath.Reverse(); // Đảo ngược để có đường từ vị trí hiện tại đến đích
+            currentPath.Reverse(); // Reverse to get path from current position to target
 
             Vector2Int currentGuardCell = PathfindingGridManager.WorldToGridCell(rb.position, gridManager.gridSize, gridManager.managerCellSize, gridManager.gridOrigin);
             if (currentPath.Count > 0 && currentPath[0] == currentGuardCell)
             {
-                currentPath.RemoveAt(0); // Loại bỏ ô hiện tại nếu đường dẫn bắt đầu bằng chính ô đó
+                currentPath.RemoveAt(0); // Remove the current cell if the path starts with itself
             }
 
             currentPathIndex = 0;
@@ -245,15 +246,15 @@ public class GuardPathfindingPatrol : MonoBehaviour
         else
         {
             currentPath.Clear();
-            rb.linearVelocity = Vector2.zero; // Dừng lại nếu không tìm thấy đường
+            rb.linearVelocity = Vector2.zero; // Stop if no path is found
             return false;
         }
     }
 
     /// <summary>
-    /// Tìm waypoint tiếp theo có thể đi tới trong danh sách tuần tra và bắt đầu đường đi đến đó.
+    /// Finds the next reachable waypoint in the patrol list and starts the path to it.
     /// </summary>
-    /// <param name="advanceIndexFirst">Nếu là true, sẽ tăng currentWaypointIndex lên trước khi tìm kiếm.</param>
+    /// <param name="advanceIndexFirst">If true, increments currentWaypointIndex before searching.</param>
     private void FindAndStartNextReachableWaypointPath(bool advanceIndexFirst)
     {
         if (waypoints == null || waypoints.Count == 0)
@@ -303,13 +304,13 @@ public class GuardPathfindingPatrol : MonoBehaviour
             }
             else
             {
-                Debug.Log($"[Guard {gameObject.name}] Waypoint {nextWaypointCheckIndex} is currently unreachable. Trying next.", this);
+                Debug.Log($"[Guard {gameObject.name}] Waypoint {nextWaypointCheckIndex} is currently unreachable. Trying next.");
             }
         }
 
         if (!pathFoundAndStarted)
         {
-            Debug.LogWarning($"[Guard {gameObject.name}] No reachable waypoints found. Guard is staying put.", this);
+            Debug.LogWarning($"[Guard {gameObject.name}] No reachable waypoints found. Guard is staying put.");
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("IsMoving", false);
             noReachableWaypoints = true;
@@ -323,14 +324,14 @@ public class GuardPathfindingPatrol : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("IsMoving", false);
 
-        Debug.Log("Guard " + gameObject.name + " reached waypoint " + currentWaypointIndex + ". Waiting.", this);
+        Debug.Log("Guard " + gameObject.name + " reached waypoint " + currentWaypointIndex + ". Waiting.");
         yield return new WaitForSeconds(waitTime);
 
         isWaiting = false;
         FindAndStartNextReachableWaypointPath(true);
     }
 
-    // Hàm này được gọi khi sự kiện OnGridRefreshed từ PathfindingGridManager được kích hoạt
+    // This method is called when the OnGridRefreshed event from PathfindingGridManager is triggered
     private void HandleGridRefreshed()
     {
         Debug.Log($"[Guard {gameObject.name}] Grid refreshed event received. Re-evaluating patrol path.");
@@ -342,66 +343,127 @@ public class GuardPathfindingPatrol : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"[Guard {gameObject.name}] PathfindingGridManager.InstancePathfinder is null after refresh! Guard cannot re-evaluate path.", this);
+            Debug.LogError($"[Guard {gameObject.name}] PathfindingGridManager.InstancePathfinder is null after refresh! Guard cannot re-evaluate path. Disabling guard.", this);
             noReachableWaypoints = true;
             rb.linearVelocity = Vector2.zero;
+            enabled = false; // Disable guard if pathfinder is truly gone
             return;
         }
 
+        // Clear current path and force a new pathfinding attempt from current position
         currentPath.Clear();
         currentPathIndex = 0;
-        currentWaypointIndex = 0;
-        isWaiting = false;
-        noReachableWaypoints = false;
+        isWaiting = false; // Ensure guard is not stuck in waiting state if grid changed around it
+        noReachableWaypoints = false; // Reset this flag for new pathfinding attempt
 
-        FindAndStartNextReachableWaypointPath(false);
+        // Try to find a path to the *current* target waypoint, or the next if needed
+        // This ensures the guard re-evaluates its current objective on the new grid
+        FindAndStartNextReachableWaypointPath(false); // Do not advance index yet, re-evaluate current target
     }
 
-    // Hàm phát hiện người chơi sử dụng tầm nhìn hình nón
+    // Function to detect the player using a vision cone
     void DetectPlayer()
     {
-        // Sử dụng OverlapCircleAll để lấy tất cả collider trong tầm nhìn xa nhất (viewDistance)
-        Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(transform.position, viewDistance, playerLayer);
+        // Use rb.position to ensure consistency with physics
+        Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(rb.position, viewDistance, playerLayer);
+
+        if (potentialTargets.Length == 0)
+        {
+            Debug.Log($"[Guard {gameObject.name}] No potential targets found within viewDistance ({viewDistance:F2}) on layer {LayerMask.LayerToName(playerLayer)}.", this);
+            return; // Exit early if no targets are found
+        }
+        else
+        {
+            Debug.Log($"[Guard {gameObject.name}] Found {potentialTargets.Length} potential targets within viewDistance.", this);
+        }
 
         foreach (var targetCollider in potentialTargets)
         {
-            if (targetCollider.CompareTag("Player")) // Đảm bảo đối tượng là Player
+            if (targetCollider == null) continue; // Safety check to prevent errors if collider was destroyed
+
+            // Check if the object's Tag is "Player"
+            if (targetCollider.CompareTag("Player"))
             {
-                Vector2 directionToTarget = ((Vector2)targetCollider.transform.position - (Vector2)transform.position).normalized;
+                Debug.Log($"[Guard {gameObject.name}] Player candidate found: {targetCollider.name} (Tag matches 'Player')", this);
 
-                // Tính góc giữa hướng nhìn của Guard và hướng đến Player
+                // Calculate the direction vector from the Guard's position to the Player's position
+                Vector2 directionToTarget = ((Vector2)targetCollider.transform.position - (Vector2)rb.position).normalized;
+
+                // Calculate the angle between the Guard's facing direction and the direction to the Player
+                // Vector2.SignedAngle returns an angle between -180 and 180 degrees
                 float angleToPlayer = Vector2.SignedAngle(lastFacingDirection, directionToTarget);
+                Debug.Log($"[Guard {gameObject.name}] Angle to Player {targetCollider.name}: {angleToPlayer:F2}° (Half FOV: {fieldOfViewAngle / 2f:F2}°)", this);
 
-                // Kiểm tra xem Player có nằm trong góc nhìn hay không
+                // Check if the Player is within the Guard's VISION CONE
+                // Mathf.Abs(angleToPlayer) takes the absolute value of the angle to compare with half FOV
                 if (Mathf.Abs(angleToPlayer) < fieldOfViewAngle / 2f)
                 {
-                    // Kiểm tra Line of Sight (đường nhìn có bị vật cản che không)
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, viewDistance, viewObstacleLayer);
+                    Debug.Log($"[Guard {gameObject.name}] Player {targetCollider.name} is WITHIN VISION ANGLE.", this);
 
-                    // Nếu Raycast không chạm vào vật cản nào HOẶC nếu nó chạm vào chính Player
+                    // Check Line of Sight (if the view path is blocked by an obstacle) using Raycast
+                    // Raycast starts from Guard's position, goes in `directionToTarget`, with length `viewDistance`,
+                    // and only collides with objects on the `viewObstacleLayer`.
+                    RaycastHit2D hit = Physics2D.Raycast(rb.position, directionToTarget, viewDistance, viewObstacleLayer);
+
+                    // Debug.DrawRay will draw the Raycast in the Scene view for visualization
+                    // Green: clear line of sight (not blocked)
+                    // Yellow: Raycast hits the Player itself (clear line of sight)
+                    // Red: Raycast hits an obstacle (line of sight blocked)
+                    Color rayColor = Color.blue; // Default blue if no collision
+                    if (hit.collider != null)
+                    {
+                        if (hit.collider.CompareTag("Player"))
+                        {
+                            rayColor = Color.yellow; // Raycast hits Player directly
+                        }
+                        else
+                        {
+                            rayColor = Color.red; // Raycast hits an obstacle
+                        }
+                    }
+                    Debug.DrawRay(rb.position, directionToTarget * viewDistance, rayColor, Time.deltaTime);
+
+                    // If Raycast did not hit any obstacle OR if it hit the Player itself
+                    // This means the line of sight is clear
                     if (hit.collider == null || hit.collider.CompareTag("Player"))
                     {
-                        Debug.Log("Guard " + gameObject.name + " detected player: " + targetCollider.name + " via vision cone!", this);
-                        // TODO: Kích hoạt logic phát hiện Player ở đây (ví dụ: chuyển sang trạng thái truy đuổi, báo động)
-                        return; // Phát hiện được player, không cần kiểm tra collider khác
+                        Debug.Log($"<color=lime>[Guard {gameObject.name}] PLAYER {targetCollider.name} DETECTED! (Clear LOS or Hit Player)</color>", this);
+                        // TODO: Activate Player detection logic here (e.g., transition to chase state, alert)
+                        moveSpeed = 3f; // Increase movement speed when Player is detected
+                        return; // Player detected, no need to check other colliders
+                    }
+                    else
+                    {
+                        // Log when Player is in vision cone but blocked by an obstacle
+                        Debug.Log($"<color=orange>[Guard {gameObject.name}] Player {targetCollider.name} is in vision cone but BLOCKED by {hit.collider.name} (Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)})</color>", this);
                     }
                 }
+                else
+                {
+                    // Log when Player is outside the vision cone (but still within OverlapCircle radius)
+                    Debug.Log($"[Guard {gameObject.name}] Player {targetCollider.name} is within detection radius but OUT OF VISION CONE (Angle: {angleToPlayer:F2}° vs FOV/2: {fieldOfViewAngle / 2f:F2}°)!", this);
+                }
+            }
+            else
+            {
+                // Log if an object in OverlapCircle is not the Player
+                Debug.Log($"[Guard {gameObject.name}] Non-player collider found in OverlapCircle: {targetCollider.name} (Tag: {targetCollider.tag})", this);
             }
         }
     }
 
-    // Các hàm xử lý va chạm, hiện tại không được sử dụng cho logic chính
+    // Collision handling functions, currently not used for main logic
     void OnCollisionEnter2D(Collision2D collision) { /* Debug.Log($"Collided with {collision.gameObject.name}"); */ }
     void OnTriggerEnter2D(Collider2D other) { /* Debug.Log($"Triggered by {other.gameObject.name}"); */ }
 
     // --- Gizmos for Debugging in Scene View ---
     void OnDrawGizmosSelected()
     {
-        // Debug bán kính phát hiện (DetectionRadius)
+        // Debug detection radius (DetectionRadius)
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
-        // Debug đường tuần tra (waypoints)
+        // Debug patrol path (waypoints)
         Gizmos.color = Color.green;
         if (waypoints != null)
         {
@@ -418,7 +480,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
             }
         }
 
-        // Debug đường đi hiện tại từ Pathfinder2D
+        // Debug current path from Pathfinder2D
         if (currentPath != null && currentPath.Count > 0 && gridManager != null)
         {
             Gizmos.color = Color.cyan;
@@ -431,17 +493,17 @@ public class GuardPathfindingPatrol : MonoBehaviour
             }
         }
 
-        // Debug tầm nhìn hình nón (Vision Cone)
+        // Debug Vision Cone
         if (rb != null)
         {
             Vector3 guardPos = transform.position;
             Vector2 forwardDir = lastFacingDirection;
 
-            // Vẽ tầm nhìn xa tổng quát (vòng tròn màu cam mờ)
-            Gizmos.color = new Color(1f, 0.5f, 0f, 0.2f); // Màu cam trong suốt
+            // Draw general view distance (faint orange circle)
+            Gizmos.color = new Color(1f, 0.5f, 0f, 0.2f); // Transparent orange
             Gizmos.DrawSphere(guardPos, viewDistance);
 
-            // Vẽ nón nhìn (màu vàng)
+            // Draw vision cone (yellow)
             Gizmos.color = Color.yellow;
             float halfFOV = fieldOfViewAngle / 2f;
 
@@ -465,14 +527,14 @@ public class GuardPathfindingPatrol : MonoBehaviour
                 previousPointInArc = currentPointInArc;
             }
 
-            // Vẽ tia chính giữa của nón nhìn
+            // Draw the central ray of the vision cone
             Gizmos.DrawLine(guardPos, guardPos + (Vector3)forwardDir * viewDistance);
 
-            // Debug Line of Sight (tùy chọn) - Hiển thị tia Raycast bị chặn bởi vật cản
-            // Chỉ chạy trong Play Mode để tránh Raycast liên tục trong Editor
+            // Debug Line of Sight (optional) - Displays raycast blocked by obstacles
+            // Only runs in Play Mode to avoid continuous Raycast in Editor
             if (Application.isPlaying)
             {
-                Vector2 raycastDir = forwardDir; // Hướng Raycast
+                Vector2 raycastDir = forwardDir; // Raycast direction
                 RaycastHit2D hit = Physics2D.Raycast(guardPos, raycastDir, viewDistance, viewObstacleLayer);
                 Gizmos.color = hit.collider != null ? Color.red : Color.blue;
                 Gizmos.DrawRay(guardPos, raycastDir * viewDistance);
