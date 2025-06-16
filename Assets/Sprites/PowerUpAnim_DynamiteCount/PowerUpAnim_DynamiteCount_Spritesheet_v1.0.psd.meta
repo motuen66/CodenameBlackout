@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PowerUpAnim_DynamiteCount_Spritesheet_v1.0_0: 8184299502076858547
+      PowerUpAnim_DynamiteCount_Spritesheet_v1.0_1: -3800767053399358727
+      PowerUpAnim_DynamiteCount_Spritesheet_v1.0_2: 3901926448353167577
+      PowerUpAnim_DynamiteCount_Spritesheet_v1.0_3: 53179366248719054
+      PowerUpAnim_DynamiteCount_Spritesheet_v1.0_4: 311251790128366666
+      PowerUpAnim_DynamiteCount_Spritesheet_v1.0_5: 5347423045890048706
+      PowerUpAnim_DynamiteCount_Spritesheet_v1.0_6: -1224015945002374153
+      PowerUpAnim_DynamiteCount_Spritesheet_v1.0_7: 1788482683931609450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

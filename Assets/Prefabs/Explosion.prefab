@@ -265,6 +265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e97288591438499744c57706bdd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemExtraBombPrefap: {fileID: 577529216144522223, guid: 167dbe886fed7df438fb8fafffbaae97, type: 3}
+  ItemSpiritPrefab: {fileID: 8823748160992769135, guid: 811b404233d34174c81fb57f5cfcb430, type: 3}
+  ItemExtraRangePrefap: {fileID: 8393184973059391548, guid: d44567019bb942a4fa0373b84322e66d, type: 3}
 --- !u!1 &4176438478889221023
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +451,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e97288591438499744c57706bdd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemExtraBombPrefap: {fileID: 577529216144522223, guid: 167dbe886fed7df438fb8fafffbaae97, type: 3}
+  ItemSpiritPrefab: {fileID: 8823748160992769135, guid: 811b404233d34174c81fb57f5cfcb430, type: 3}
+  ItemExtraRangePrefap: {fileID: 8393184973059391548, guid: d44567019bb942a4fa0373b84322e66d, type: 3}
 --- !u!1 &5930299680465483267
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e97288591438499744c57706bdd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemExtraBombPrefap: {fileID: 577529216144522223, guid: 167dbe886fed7df438fb8fafffbaae97, type: 3}
+  ItemSpiritPrefab: {fileID: 8823748160992769135, guid: 811b404233d34174c81fb57f5cfcb430, type: 3}
+  ItemExtraRangePrefap: {fileID: 8393184973059391548, guid: d44567019bb942a4fa0373b84322e66d, type: 3}
 --- !u!1 &6073730659772890676
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +823,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e97288591438499744c57706bdd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemExtraBombPrefap: {fileID: 577529216144522223, guid: 167dbe886fed7df438fb8fafffbaae97, type: 3}
+  ItemSpiritPrefab: {fileID: 8823748160992769135, guid: 811b404233d34174c81fb57f5cfcb430, type: 3}
+  ItemExtraRangePrefap: {fileID: 8393184973059391548, guid: d44567019bb942a4fa0373b84322e66d, type: 3}
 --- !u!1 &6141558364894161463
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +1009,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e97288591438499744c57706bdd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemExtraBombPrefap: {fileID: 577529216144522223, guid: 167dbe886fed7df438fb8fafffbaae97, type: 3}
+  ItemSpiritPrefab: {fileID: 8823748160992769135, guid: 811b404233d34174c81fb57f5cfcb430, type: 3}
+  ItemExtraRangePrefap: {fileID: 8393184973059391548, guid: d44567019bb942a4fa0373b84322e66d, type: 3}
 --- !u!1 &6172522330257199393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e97288591438499744c57706bdd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemExtraBombPrefap: {fileID: 577529216144522223, guid: 167dbe886fed7df438fb8fafffbaae97, type: 3}
+  ItemSpiritPrefab: {fileID: 8823748160992769135, guid: 811b404233d34174c81fb57f5cfcb430, type: 3}
+  ItemExtraRangePrefap: {fileID: 8393184973059391548, guid: d44567019bb942a4fa0373b84322e66d, type: 3}
 --- !u!1 &6378434050286547365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1381,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e97288591438499744c57706bdd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemExtraBombPrefap: {fileID: 577529216144522223, guid: 167dbe886fed7df438fb8fafffbaae97, type: 3}
+  ItemSpiritPrefab: {fileID: 8823748160992769135, guid: 811b404233d34174c81fb57f5cfcb430, type: 3}
+  ItemExtraRangePrefap: {fileID: 8393184973059391548, guid: d44567019bb942a4fa0373b84322e66d, type: 3}
 --- !u!1 &7441783893966725919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e97288591438499744c57706bdd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemExtraBombPrefap: {fileID: 577529216144522223, guid: 167dbe886fed7df438fb8fafffbaae97, type: 3}
+  ItemSpiritPrefab: {fileID: 8823748160992769135, guid: 811b404233d34174c81fb57f5cfcb430, type: 3}
+  ItemExtraRangePrefap: {fileID: 8393184973059391548, guid: d44567019bb942a4fa0373b84322e66d, type: 3}
 --- !u!1 &8905677623211523457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,3 +1753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e97288591438499744c57706bdd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemExtraBombPrefap: {fileID: 577529216144522223, guid: 167dbe886fed7df438fb8fafffbaae97, type: 3}
+  ItemSpiritPrefab: {fileID: 8823748160992769135, guid: 811b404233d34174c81fb57f5cfcb430, type: 3}
+  ItemExtraRangePrefap: {fileID: 8393184973059391548, guid: d44567019bb942a4fa0373b84322e66d, type: 3}
