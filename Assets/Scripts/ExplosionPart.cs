@@ -142,6 +142,14 @@ public class ExplosionPart : MonoBehaviour
                 SpawnItemsRandom(destroyPosition);
             }
         }
+        else if (other.CompareTag("Player"))
+        {
+            if (!playerDead)
+            {
+                Debug.Log("da chet");
+                playerDead = true;
+            }
+        }
     }
 
     private void SpawnItemsRandom(Vector2 spawnPosition)
@@ -183,13 +191,6 @@ public class ExplosionPart : MonoBehaviour
             case "ItemExtraRange": return ItemExtraRangePrefap;
             default: return null;
         }
-        else if (other.CompareTag("Player"))
-        {
-            if (!playerDead)
-            {
-                Debug.Log("da chet");
-                playerDead = true;
-            }
-        }
+        
     }
 }
