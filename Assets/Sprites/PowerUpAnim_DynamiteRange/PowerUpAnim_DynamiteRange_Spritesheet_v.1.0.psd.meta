@@ -497,7 +497,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_0: 5219967680411127154
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_1: 3954688738892362370
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_10: -8655402215438144713
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_11: 7226267903549785609
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_12: 5820870365198916156
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_13: -7333684392548133191
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_14: 4945952922443135964
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_2: -3753728210391380628
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_3: -7143835470980457102
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_4: 3187965804533624534
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_5: 4416769742561720705
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_6: -2607683585113478893
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_7: 8226199893262773185
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_8: 5418858611077512843
+      PowerUpAnim_DynamiteRange_Spritesheet_v.1.0_9: -2606526772738395513
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

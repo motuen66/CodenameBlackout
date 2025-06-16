@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PowerUpAnim_Speed_v.1.0_0: 2798676575218307508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
