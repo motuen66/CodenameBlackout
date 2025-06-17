@@ -5519,7 +5519,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -6706,7 +6706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619394802}
   - component: {fileID: 619394801}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Global Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7944,7 +7944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707834424}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destructibles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8601,13 +8601,22 @@ MonoBehaviour:
   detectionRadius: 0.5
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   fieldOfViewAngle: 90
   viewDistance: 5
   viewObstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
-  guardLight: {fileID: 0}
+    m_Bits: 384
+  visionVerticalOffset: 0
+  multiRayAngularSpread: 30
+  numberOfRays: 7
+  raycastOriginOffset: 0.1
+  guardLight: {fileID: 1210710487}
+  visionBlockingMask:
+    serializedVersion: 2
+    m_Bits: 392
+  alertSpeed: 2
+  speedBoostDuration: 5
 --- !u!4 &721884458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
@@ -17583,7 +17592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1439528304}
   - component: {fileID: 1439528306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Indestructibles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17939,7 +17948,7 @@ GameObject:
   - component: {fileID: 1473510949}
   - component: {fileID: 1473510950}
   - component: {fileID: 1473510951}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19464,7 +19473,7 @@ GameObject:
   - component: {fileID: 1591151836}
   - component: {fileID: 1591151835}
   - component: {fileID: 1591151837}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20754,7 +20763,7 @@ GameObject:
   - component: {fileID: 1703463663}
   - component: {fileID: 1703463665}
   - component: {fileID: 1703463666}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -29632,7 +29641,7 @@ GameObject:
   - component: {fileID: 2099980824}
   - component: {fileID: 2099980825}
   - component: {fileID: 2099980826}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29754,7 +29763,7 @@ GameObject:
   - component: {fileID: 2101714510}
   - component: {fileID: 2101714511}
   - component: {fileID: 2101714512}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
