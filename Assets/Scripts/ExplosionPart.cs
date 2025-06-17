@@ -103,6 +103,7 @@ public class ExplosionPart : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private static bool playerDead = false; // Biến static để kiểm soát log
+    private static bool isWin = false; // Biến static để kiểm soát log
 
     [Header("Items")]
     public GameObject ItemExtraBombPrefap;
@@ -144,10 +145,18 @@ public class ExplosionPart : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            if (!playerDead)
+            if (!isWin)
             {
                 Debug.Log("da chet");
-                playerDead = true;
+                isWin = true;
+            }
+        }
+        else if (other.CompareTag("Target"))
+        {
+            if (!isWin)
+            {
+                Debug.Log("ban da chien thang");
+                isWin = true;
             }
         }
     }
