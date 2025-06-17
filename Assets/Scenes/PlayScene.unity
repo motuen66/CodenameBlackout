@@ -8601,13 +8601,13 @@ MonoBehaviour:
   detectionRadius: 0.5
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   fieldOfViewAngle: 90
   viewDistance: 5
   viewObstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
-  guardLight: {fileID: 0}
+    m_Bits: 384
+  guardLight: {fileID: 1210710487}
 --- !u!4 &721884458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7771345121385458232, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
