@@ -121,6 +121,11 @@ public class BombController : MonoBehaviour
     {
         ExplosionPart explosionPart = ExplosionPart.Instance;
         ItemController itemController = ItemController.Instance;
+
+        if (explosionPart == null || itemController == null) {
+            return;
+        }
+
         string touchObjectName = collision.gameObject.name.Split("(Clone)")[0];
 
         if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
