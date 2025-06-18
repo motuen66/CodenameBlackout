@@ -63,7 +63,7 @@ public class ExplosionPart : MonoBehaviour
                 // Vị trí của block bị phá hủy để spawn item
                 Vector2 destroyPosition = other.transform.position;
                 destructibleBlock.DestroyBlock(); // Gọi hàm DestroyBlock của DestructibleBlock
-                SpawnItemsRandom(destroyPosition); // Spawn item tại vị trí block bị phá hủy
+                //SpawnItemsRandom(destroyPosition); // Spawn item tại vị trí block bị phá hủy
             }
             // --- KẾT THÚC SỬA ĐỔI ---
         }

@@ -6,8 +6,7 @@ using UnityEngine.Rendering.Universal; // IMPORTANT: Add this line to use Light2
 
 [RequireComponent(typeof(Collider2D))] // Ensure the Guard has a Collider2D for vision origin
 public class GuardPathfindingPatrol : MonoBehaviour
-{
-    // --- Public Configuration (Set in Inspector) ---
+{// --- Public Configuration (Set in Inspector) ---
     public List<Transform> waypoints; // List of patrol waypoints
     public float moveSpeed = 1.5f;     // Movement speed
     public float waitTime = 1f;        // Time to wait at each waypoint
@@ -45,7 +44,16 @@ public class GuardPathfindingPatrol : MonoBehaviour
     private Pathfinder2D pathfinder; // Reference to the pathfinding object
     private PathfindingGridManager gridManager; // Reference to the grid manager
 
-    private Vector2 lastFacingDirection = Vector2.down; // Last facing direction of the Guard, defaults to down
+    private Vector2 lastFacingDirection = Vector2.down;
+    
+    [SerializeField] private LayerMask visionBlockingMask; // ✅ Layer: Player + Obstacl
+
+    [SerializeField] private float alertSpeed = 3f;
+    [SerializeField] private float speedBoostDuration = 5f;
+
+    private float currentSpeed;
+    private Coroutine speedBoostCoroutine;
+    
 
     void Awake()
     {
@@ -87,6 +95,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
     void Start()
     {
+        currentSpeed = moveSpeed;
         // Check validity of the waypoints list
         if (waypoints == null || waypoints.Count == 0)
         {
@@ -195,7 +204,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
         Vector3 targetWorldPosition = PathfindingGridManager.GridCellToWorldCenter(targetCell, gridManager.managerCellSize, gridManager.gridOrigin);
 
         Vector2 moveDirection = ((Vector2)targetWorldPosition - rb.position).normalized;
-        rb.linearVelocity = moveDirection * moveSpeed;
+        rb.linearVelocity = moveDirection * currentSpeed;
 
         // If the Guard is close to the current target cell
         if (Vector2.Distance(rb.position, targetWorldPosition) < cellReachThreshold)
@@ -381,143 +390,138 @@ public class GuardPathfindingPatrol : MonoBehaviour
     // Function to detect the player using a vision cone
     void DetectPlayer()
     {
-        // Set back to patrol speed by default each frame
-        moveSpeed = 1.5f; 
+        Vector2 visionOrigin = (guardCollider != null)
+            ? new Vector2(guardCollider.bounds.center.x, guardCollider.bounds.max.y + visionVerticalOffset)
+            : (Vector2)rb.position;
 
-        // Get the accurate vision origin from the top of the collider + vertical offset for the Guard.
-        Vector2 visionOrigin = (guardCollider != null) 
-                                ? new Vector2(guardCollider.bounds.center.x, guardCollider.bounds.max.y + visionVerticalOffset) 
-                                : (Vector2)rb.position;
-
+        // Tìm các Player trong tầm nhìn
         Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(visionOrigin, viewDistance, playerLayer);
+        if (potentialTargets.Length == 0) return;
 
-        if (potentialTargets.Length == 0)
-        {
-            return; // Exit early if no targets are found
-        }
-        
         foreach (var targetCollider in potentialTargets)
         {
-            if (targetCollider == null) continue; 
+            if (targetCollider == null || !targetCollider.CompareTag("Player")) continue;
 
-            if (targetCollider.CompareTag("Player"))
+            Collider2D playerCollider = targetCollider.GetComponent<Collider2D>();
+            List<Vector2> playerTargetPoints = new List<Vector2>();
+
+            if (playerCollider != null)
             {
-                // Get the target point(s) on the Player's collider (top/center)
-                Collider2D playerCollider = targetCollider.GetComponent<Collider2D>();
-                
-                // Define multiple points on the player to target for rays to ensure better detection
-                List<Vector2> playerTargetPoints = new List<Vector2>();
-                if (playerCollider != null)
-                {
-                    playerTargetPoints.Add(new Vector2(playerCollider.bounds.center.x, playerCollider.bounds.max.y)); // Top of collider
-                    playerTargetPoints.Add(playerCollider.bounds.center); // Center of collider
-                    playerTargetPoints.Add(new Vector2(playerCollider.bounds.center.x, playerCollider.bounds.min.y)); // Bottom of collider (e.g., feet)
-                }
-                else
-                {
-                    playerTargetPoints.Add(targetCollider.transform.position); // Fallback to pivot if no collider
-                }
+                // Các điểm mục tiêu để raycast: trên, giữa, dưới collider
+                playerTargetPoints.Add(new Vector2(playerCollider.bounds.center.x, playerCollider.bounds.max.y)); // Top
+                playerTargetPoints.Add(playerCollider.bounds.center); // Center
+                playerTargetPoints.Add(new Vector2(playerCollider.bounds.center.x, playerCollider.bounds.min.y)); // Bottom
+            }
+            else
+            {
+                playerTargetPoints.Add(targetCollider.transform.position); // fallback
+            }
 
-                bool playerDetected = false;
-                foreach (Vector2 playerTargetPoint in playerTargetPoints)
+            foreach (Vector2 playerTargetPoint in playerTargetPoints)
+            {
+                Vector2 directionToTarget = (playerTargetPoint - visionOrigin).normalized;
+                float angleToPlayer = Vector2.SignedAngle(lastFacingDirection, directionToTarget);
+
+                // Kiểm tra trong góc nhìn
+                if (Mathf.Abs(angleToPlayer) <= fieldOfViewAngle / 2f)
                 {
-                    // Calculate the main direction vector from the Guard's vision origin to the Player's target point
-                    Vector2 directionToTarget = (playerTargetPoint - visionOrigin).normalized;
-                    
-                    float angleToPlayer = Vector2.SignedAngle(lastFacingDirection, directionToTarget);
+                    // Check LOS: nếu phát hiện player không bị cản
+                    bool losClear = CheckLineOfSightMultiRay(
+                        visionOrigin,
+                        playerTargetPoint,
+                        viewDistance,
+                        visionBlockingMask, // 👈 bao gồm Player + Obstacle layer
+                        multiRayAngularSpread,
+                        numberOfRays,
+                        raycastOriginOffset
+                    );
 
-                    // NEW DEBUG LOG: Check angle
-                    Debug.Log($"[Guard {gameObject.name} Angle Check] Player {targetCollider.name}: Angle to Player: {angleToPlayer:F2} degrees. Half FOV: {fieldOfViewAngle / 2f:F2} degrees. Is in cone: {Mathf.Abs(angleToPlayer) <= fieldOfViewAngle / 2f}");
-
-                    // If the angle to *any* player target point is within the FOV (changed to <=)
-                    if (Mathf.Abs(angleToPlayer) <= fieldOfViewAngle / 2f)
+                    if (losClear)
                     {
-                        // Use multi-raycast for LOS check, targeting the calculated playerTargetPoint
-                        // Pass playerLayer as the LayerMask for the raycast to ignore other obstacles.
-                        bool losClear = CheckLineOfSightMultiRay(visionOrigin, playerTargetPoint, viewDistance, playerLayer, multiRayAngularSpread, numberOfRays, raycastOriginOffset, targetCollider.gameObject);
+                        Debug.Log($"<color=lime>[Guard {gameObject.name}] Player {targetCollider.name} detected!</color>", this);
+                        TriggerSpeedBoost();
 
-                        if (losClear)
-                        {
-                            playerDetected = true;
-                            break; // Player detected, no need to check further target points or colliders.
-                        }
+                        // Vẽ tia trắng đơn để thấy hướng tổng quát
+                        Debug.DrawRay(visionOrigin, (playerTargetPoint - visionOrigin).normalized * viewDistance, Color.white, 0.1f);
+
+                        return; // Phát hiện → dừng kiểm tra
                     }
                 }
-
-                if (playerDetected)
-                {
-                    Debug.Log($"<color=lime>[Guard {gameObject.name}] PLAYER {targetCollider.name} DETECTED! (Clear LOS via multi-ray)</color>", this);
-                    moveSpeed = 3f; 
-                    return; // Player detected, no need to check other potential targets.
-                }
-                else
-                {
-                    // This log will only show if the player is in the general OverlapCircle and vision cone,
-                    // but ALL rays to ALL target points were blocked.
-                    Debug.Log($"<color=orange>[Guard {gameObject.name}] Player {targetCollider.name} is in vision cone but BLOCKED by obstacle(s) (multi-ray check).</color>", this);
-                }
             }
+
+            Debug.Log($"<color=orange>[Guard {gameObject.name}] Player in cone but blocked.</color>", this);
         }
     }
 
+
+
+    void TriggerSpeedBoost()
+    {
+        if (speedBoostCoroutine != null)    
+        {
+            StopCoroutine(speedBoostCoroutine);
+        }
+
+        speedBoostCoroutine = StartCoroutine(SpeedBoostCoroutine());
+    }
+    IEnumerator SpeedBoostCoroutine()
+    {
+        currentSpeed = alertSpeed;
+        yield return new WaitForSeconds(speedBoostDuration);
+        currentSpeed = moveSpeed;
+        speedBoostCoroutine = null;
+    }
+
     /// <summary>
-    /// Checks Line of Sight using multiple rays spread out towards the target.
+    /// Checks Line of Sight using multiple rays that detect obstacles blocking view to the player.
     /// </summary>
     /// <param name="origin">The starting point of the rays (e.g., Guard's eye level).</param>
     /// <param name="target">The target point (e.g., Player's top collider point).</param>
     /// <param name="distance">Maximum distance for rays.</param>
-    /// <param name="raycastTargetLayer">Layer mask for objects that the ray should detect (e.g., ONLY player layer to ignore obstacles).</param>
+    /// <param name="visionBlockingMask">LayerMask that includes Player + Obstacles.</param>
     /// <param name="angularSpread">Total angular spread for the rays (e.g., 30 degrees).</param>
     /// <param name="numRays">Total number of rays to cast (should be odd for a central ray).</param>
-    /// <param name="originOffset">Small offset to push raycast origin slightly outside Guard's collider.</param>
-    /// <param name="ignoreObject">The GameObject to ignore during raycasting (usually the Player itself if checking for clear path).</param>
-    /// <returns>True if any ray successfully reaches the target or passes through empty space, False if all rays are blocked.</returns>
-    private bool CheckLineOfSightMultiRay(Vector2 origin, Vector2 target, float distance, LayerMask raycastTargetLayer, float angularSpread, int numRays, float originOffset, GameObject ignoreObject)
+    /// <param name="originOffset">Offset to push ray start slightly outside the guard collider.</param>
+    /// <returns>True if any ray reaches player without being blocked.</returns>
+    private bool CheckLineOfSightMultiRay(Vector2 origin, Vector2 target, float distance, LayerMask visionBlockingMask, float angularSpread, int numRays, float originOffset)
     {
-        // Direction from origin to target
         Vector2 mainDirection = (target - origin).normalized;
+        bool anyRayHitsPlayer = false;
 
-        bool anyRayClear = false;
-
-        float angleStep = 0;
-        if (numRays > 1) 
-        {
-            angleStep = angularSpread / (numRays - 1);
-        }
-
+        float angleStep = numRays > 1 ? angularSpread / (numRays - 1) : 0f;
         float startAngle = -angularSpread / 2f;
 
         for (int i = 0; i < numRays; i++)
         {
             float currentAngle = startAngle + i * angleStep;
-            
-            Quaternion rayRotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
-            Vector2 rayDirection = rayRotation * mainDirection;
+            Vector2 rayDirection = Quaternion.Euler(0, 0, currentAngle) * mainDirection;
+            Vector2 rayStart = origin + rayDirection * originOffset;
 
-            // NEW: Offset ray start explicitly outwards from visionOrigin based on originOffset
-            Vector2 rayStart = origin + rayDirection * originOffset; 
+            RaycastHit2D hit = Physics2D.Raycast(rayStart, rayDirection, distance, visionBlockingMask);
 
-            // Perform raycast only against the specified raycastTargetLayer (which will be playerLayer)
-            RaycastHit2D hit = Physics2D.Raycast(rayStart, rayDirection, distance, raycastTargetLayer);
+            Color drawColor = Color.blue;
 
-            // Debug draw for each ray
-            Color drawColor = Color.blue; // Default to blue (no hit on player)
             if (hit.collider != null)
             {
-                // If we hit something, and that something is the player, it's a clear line of sight
-                // (Given raycastTargetLayer is now playerLayer, hit.collider should *be* a player)
-                // We keep the ignoreObject check for robustness, although in this context it should always be true.
-                if (hit.collider.gameObject == ignoreObject || hit.collider.CompareTag("Player"))
+                if (hit.collider.CompareTag("Player"))
                 {
-                    drawColor = Color.yellow; // Ray successfully hits player
-                    anyRayClear = true; // Mark as clear immediately
+                    drawColor = Color.green; // 👀 Có thể thấy player
+                    anyRayHitsPlayer = true;
+                    break; // Phát hiện thành công, không cần kiểm tra tiếp
                 }
-                // Removed the 'else { drawColor = Color.red; }' because we are ignoring obstacles as per user's request.
+                else
+                {
+                    drawColor = Color.red; // 🚫 Bị cản
+                }
             }
+
             Debug.DrawRay(rayStart, rayDirection * distance, drawColor, Time.deltaTime);
         }
-        return anyRayClear; // Return true if ANY ray successfully hit the player
+
+        return anyRayHitsPlayer;
     }
+
+
 
     // Collision handling functions, currently not used for main logic
     void OnCollisionEnter2D(Collision2D collision) { /* Debug.Log($"Collided with {collision.gameObject.name}"); */ }
