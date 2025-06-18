@@ -193,7 +193,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
                 // If the path is exhausted but the waypoint hasn't been reached (e.g., blocked midway), try to find a path again
                 rb.linearVelocity = Vector2.zero;
                 animator.SetBool("IsMoving", false);
-                Debug.LogWarning($"[Guard {gameObject.name}] Path exhausted or blocked before reaching final waypoint. Re-evaluating path.", this);
+                //Debug.LogWarning($"[Guard {gameObject.name}] Path exhausted or blocked before reaching final waypoint. Re-evaluating path.", this);
                 FindAndStartNextReachableWaypointPath(true); // Find path again
             }
             return;
@@ -220,12 +220,12 @@ public class GuardPathfindingPatrol : MonoBehaviour
                 if (waypoints != null && waypoints.Count > currentWaypointIndex && waypoints[currentWaypointIndex] != null &&
                     Vector2.Distance(rb.position, waypoints[currentWaypointIndex].position) < cellReachThreshold)
                 {
-                    Debug.Log($"[Guard {gameObject.name}] Reached waypoint {currentWaypointIndex}. Starting wait.");
+                    //Debug.Log($"[Guard {gameObject.name}] Reached waypoint {currentWaypointIndex}. Starting wait.");
                     StartCoroutine(WaitAtWaypoint());
                 }
                 else
                 {
-                    Debug.LogWarning($"[Guard {gameObject.name}] Path completed, but not exactly at waypoint {currentWaypointIndex}. Retrying pathfinding.");
+                    //Debug.LogWarning($"[Guard {gameObject.name}] Path completed, but not exactly at waypoint {currentWaypointIndex}. Retrying pathfinding.");
                     FindAndStartNextReachableWaypointPath(true);
                 }
             }
@@ -241,7 +241,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
     {
         if (pathfinder == null || gridManager == null)
         {
-            Debug.LogError("[Guard] Missing pathfinder or gridManager for pathfinding attempt!", this);
+            //Debug.LogError("[Guard] Missing pathfinder or gridManager for pathfinding attempt!", this);
             return false;
         }
 
@@ -280,7 +280,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
     {
         if (waypoints == null || waypoints.Count == 0)
         {
-            Debug.LogError("[Guard] Waypoints list is null or empty. Cannot find next waypoint.", this);
+            //Debug.LogError("[Guard] Waypoints list is null or empty. Cannot find next waypoint.", this);
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("IsMoving", false);
             enabled = false;
@@ -289,7 +289,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
         if (pathfinder == null)
         {
-            Debug.LogError("[Guard] Pathfinder is null when trying to find next reachable waypoint! Aborting.", this);
+            //Debug.LogError("[Guard] Pathfinder is null when trying to find next reachable waypoint! Aborting.", this);
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("IsMoving", false);
             noReachableWaypoints = true;
@@ -311,7 +311,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
             if (waypoints[nextWaypointCheckIndex] == null)
             {
-                Debug.LogWarning($"[Guard] Waypoint at index {nextWaypointCheckIndex} is NULL. Skipping.", this);
+                //Debug.LogWarning($"[Guard] Waypoint at index {nextWaypointCheckIndex} is NULL. Skipping.", this);
                 continue;
             }
 
@@ -320,7 +320,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
                 currentWaypointIndex = nextWaypointCheckIndex;
                 pathFoundAndStarted = true;
                 noReachableWaypoints = false;
-                Debug.Log($"[Guard {gameObject.name}] Proceeding to reachable waypoint {currentWaypointIndex}.");
+                //Debug.Log($"[Guard {gameObject.name}] Proceeding to reachable waypoint {currentWaypointIndex}.");
                 break;
             }
             else
@@ -336,7 +336,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
         if (!pathFoundAndStarted)
         {
-            Debug.LogWarning($"[Guard {gameObject.name}] No reachable waypoints found. Guard is staying put.");
+            //Debug.LogWarning($"[Guard {gameObject.name}] No reachable waypoints found. Guard is staying put.");
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("IsMoving", false);
             noReachableWaypoints = true;
@@ -360,7 +360,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
     // This method is called when the OnGridRefreshed event from PathfindingGridManager is triggered
     private void HandleGridRefreshed()
     {
-        Debug.Log($"[Guard {gameObject.name}] Grid refreshed event received. Re-evaluating patrol path.");
+        //Debug.Log($"[Guard {gameObject.name}] Grid refreshed event received. Re-evaluating patrol path.");
 
         if (PathfindingGridManager.InstancePathfinder != null)
         {
@@ -369,7 +369,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"[Guard {gameObject.name}] PathfindingGridManager.InstancePathfinder is null after refresh! Guard cannot re-evaluate path. Disabling guard.", this);
+            //Debug.LogError($"[Guard {gameObject.name}] PathfindingGridManager.InstancePathfinder is null after refresh! Guard cannot re-evaluate path. Disabling guard.", this);
             noReachableWaypoints = true;
             rb.linearVelocity = Vector2.zero;
             enabled = false; // Disable guard if pathfinder is truly gone
@@ -438,18 +438,18 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
                     if (losClear)
                     {
-                        Debug.Log($"<color=lime>[Guard {gameObject.name}] Player {targetCollider.name} detected!</color>", this);
+                        //Debug.Log($"<color=lime>[Guard {gameObject.name}] Player {targetCollider.name} detected!</color>", this);
                         TriggerSpeedBoost();
 
                         // Vẽ tia trắng đơn để thấy hướng tổng quát
-                        Debug.DrawRay(visionOrigin, (playerTargetPoint - visionOrigin).normalized * viewDistance, Color.white, 0.1f);
+                        //Debug.DrawRay(visionOrigin, (playerTargetPoint - visionOrigin).normalized * viewDistance, Color.white, 0.1f);
 
                         return; // Phát hiện → dừng kiểm tra
                     }
                 }
             }
 
-            Debug.Log($"<color=orange>[Guard {gameObject.name}] Player in cone but blocked.</color>", this);
+            //Debug.Log($"<color=orange>[Guard {gameObject.name}] Player in cone but blocked.</color>", this);
         }
     }
 
@@ -570,7 +570,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
             }
         }
 
-        // Debug Vision Cone - Ensure guardCollider is not null before drawing vision gizmos
+         // Debug Vision Cone - Ensure guardCollider is not null before drawing vision gizmos
         if (rb != null && guardCollider != null) 
         {
             // guardPos already defined above from the top of the collider + vertical offset
