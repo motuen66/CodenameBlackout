@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Destructible
   - Indestructible
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: Indestrucable
     uniqueID: 1336542573
+    locked: 0
+  - name: Guard
+    uniqueID: 1200216237
     locked: 0
   m_RenderingLayers:
   - Default
