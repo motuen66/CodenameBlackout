@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using KwaaktjePathfinder2D;
 using UnityEngine.Rendering.Universal; // IMPORTANT: Add this line to use Light2D
 
+[RequireComponent(typeof(Collider2D))] // Ensure the Guard has a Collider2D for vision origin
 public class GuardPathfindingPatrol : MonoBehaviour
 {// --- Public Configuration (Set in Inspector) ---
     public List<Transform> waypoints; // List of patrol waypoints
@@ -64,6 +65,10 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
         animator = GetComponent<Animator>();
         if (animator == null) Debug.LogError("Guard Animator component missing!", this);
+
+        // Get Guard's Collider2D for accurate vision origin
+        guardCollider = GetComponent<Collider2D>();
+        if (guardCollider == null) Debug.LogError("Guard Collider2D component missing! Vision calculations might be off. Add a Collider2D to Guard.", this);
 
         // Get Light2D automatically if not assigned in Inspector (if it's a child)
         if (guardLight == null)
@@ -220,7 +225,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("Path completed, but not exactly at waypoint. Retrying...");
+                    Debug.LogWarning($"[Guard {gameObject.name}] Path completed, but not exactly at waypoint {currentWaypointIndex}. Retrying pathfinding.");
                     FindAndStartNextReachableWaypointPath(true);
                 }
             }
@@ -320,7 +325,12 @@ public class GuardPathfindingPatrol : MonoBehaviour
             }
             else
             {
-                Debug.Log($"[Guard {gameObject.name}] Waypoint {nextWaypointCheckIndex} is currently unreachable. Trying next.");
+                // Only log this if it's the currently targeted waypoint and it becomes unreachable.
+                // Avoids spamming for every other waypoint in the list being unreachable during the initial scan.
+                if (nextWaypointCheckIndex == currentWaypointIndex)
+                {
+                     Debug.LogWarning($"[Guard {gameObject.name}] Current waypoint {nextWaypointCheckIndex} is currently unreachable. Trying next available waypoint.");
+                }
             }
         }
 
@@ -355,7 +365,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
         if (PathfindingGridManager.InstancePathfinder != null)
         {
             pathfinder = PathfindingGridManager.InstancePathfinder;
-            Debug.Log($"[Guard {gameObject.name}] Updated pathfinder reference to the new grid data.");
+            // Debug.Log($"[Guard {gameObject.name}] Updated pathfinder reference to the new grid data."); // Commented out to reduce log spam
         }
         else
         {
@@ -520,9 +530,14 @@ public class GuardPathfindingPatrol : MonoBehaviour
     // --- Gizmos for Debugging in Scene View ---
     void OnDrawGizmosSelected()
     {
+        // Get the accurate point for Gizmos drawing from the top of the collider + vertical offset for Guard.
+        Vector3 guardPos = (guardCollider != null) 
+                           ? new Vector3(guardCollider.bounds.center.x, guardCollider.bounds.max.y + visionVerticalOffset, transform.position.z) 
+                           : transform.position;
+
         // Debug detection radius (DetectionRadius)
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.DrawWireSphere(guardPos, detectionRadius); 
 
         // Debug patrol path (waypoints)
         Gizmos.color = Color.green;
@@ -542,10 +557,11 @@ public class GuardPathfindingPatrol : MonoBehaviour
         }
 
         // Debug current path from Pathfinder2D
+        // This still uses rb.position as pathfinding usually works on grid cells relative to Rigidbody.
         if (currentPath != null && currentPath.Count > 0 && gridManager != null)
         {
             Gizmos.color = Color.cyan;
-            Vector3 previous = rb.position;
+            Vector3 previous = rb.position; 
             for (int i = currentPathIndex; i < currentPath.Count; i++)
             {
                 Vector3 center = PathfindingGridManager.GridCellToWorldCenter(currentPath[i], gridManager.managerCellSize, gridManager.gridOrigin);
@@ -554,15 +570,15 @@ public class GuardPathfindingPatrol : MonoBehaviour
             }
         }
 
-        // Debug Vision Cone
-        if (rb != null)
+        // Debug Vision Cone - Ensure guardCollider is not null before drawing vision gizmos
+        if (rb != null && guardCollider != null) 
         {
-            Vector3 guardPos = transform.position;
+            // guardPos already defined above from the top of the collider + vertical offset
             Vector2 forwardDir = lastFacingDirection;
 
             // Draw general view distance (faint orange circle)
             Gizmos.color = new Color(1f, 0.5f, 0f, 0.2f); // Transparent orange
-            Gizmos.DrawSphere(guardPos, viewDistance);
+            Gizmos.DrawSphere(guardPos, viewDistance); 
 
             // Draw vision cone (yellow)
             Gizmos.color = Color.yellow;
@@ -574,31 +590,20 @@ public class GuardPathfindingPatrol : MonoBehaviour
             Vector3 leftRayDirection = leftRayRotation * forwardDir;
             Vector3 rightRayDirection = rightRayRotation * forwardDir;
 
-            Gizmos.DrawRay(guardPos, leftRayDirection * viewDistance);
-            Gizmos.DrawRay(guardPos, rightRayDirection * viewDistance);
+            // Draw the two outer rays of the cone
+            Gizmos.DrawRay(guardPos, leftRayDirection * viewDistance); 
+            Gizmos.DrawRay(guardPos, rightRayDirection * viewDistance); 
 
+            // Draw the arc of the cone
             int segments = 20;
-            Vector3 previousPointInArc = guardPos + leftRayDirection * viewDistance;
+            Vector3 previousPointInArc = guardPos + leftRayDirection * viewDistance; 
             for (int i = 1; i <= segments; i++)
             {
                 float angle = -halfFOV + (fieldOfViewAngle / segments) * i;
                 Quaternion currentRayRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                Vector3 currentPointInArc = guardPos + (currentRayRotation * forwardDir) * viewDistance;
+                Vector3 currentPointInArc = guardPos + (currentRayRotation * forwardDir) * viewDistance; 
                 Gizmos.DrawLine(previousPointInArc, currentPointInArc);
                 previousPointInArc = currentPointInArc;
-            }
-
-            // Draw the central ray of the vision cone
-            Gizmos.DrawLine(guardPos, guardPos + (Vector3)forwardDir * viewDistance);
-
-            // Debug Line of Sight (optional) - Displays raycast blocked by obstacles
-            // Only runs in Play Mode to avoid continuous Raycast in Editor
-            if (Application.isPlaying)
-            {
-                Vector2 raycastDir = forwardDir; // Raycast direction
-                RaycastHit2D hit = Physics2D.Raycast(guardPos, raycastDir, viewDistance, viewObstacleLayer);
-                Gizmos.color = hit.collider != null ? Color.red : Color.blue;
-                Gizmos.DrawRay(guardPos, raycastDir * viewDistance);
             }
         }
     }
