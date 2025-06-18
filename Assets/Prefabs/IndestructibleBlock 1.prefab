@@ -12,9 +12,6 @@ GameObject:
   - component: {fileID: 211933520291594054}
   - component: {fileID: 6116707375322646309}
   - component: {fileID: 2497660212301100122}
-  - component: {fileID: 6479926236077958518}
-  - component: {fileID: 3352155924087934788}
-  - component: {fileID: 3557160628223609653}
   m_Layer: 8
   m_Name: IndestructibleBlock 1
   m_TagString: Indestructible
@@ -30,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8193650742775797654}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0012984, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -139,42 +136,6 @@ BoxCollider2D:
   m_Size: {x: 0.9983156, y: 1.0003766}
   m_EdgeRadius: 0
 --- !u!114 &2497660212301100122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8193650742775797654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ffef0d71a1633b4eb2c6080d1b2ceab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6479926236077958518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8193650742775797654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ffef0d71a1633b4eb2c6080d1b2ceab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3352155924087934788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8193650742775797654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ffef0d71a1633b4eb2c6080d1b2ceab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3557160628223609653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

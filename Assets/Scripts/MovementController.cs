@@ -97,6 +97,7 @@ public class MovementController : MonoBehaviour
     {
         direction = newDirection;
 
+        // Chuyển hướng hiển thị sprite
         spriteRendererUp.enabled = spriteRenderer == spriteRendererUp;
         spriteRendererDown.enabled = spriteRenderer == spriteRendererDown;
         spriteRendererLeft.enabled = spriteRenderer == spriteRendererLeft;
@@ -104,5 +105,16 @@ public class MovementController : MonoBehaviour
 
         activeSpriteRenderer = spriteRenderer;
         activeSpriteRenderer.idle = direction == Vector2.zero;
+
+        // Thêm xử lý âm thanh bước chân
+        if (direction == Vector2.zero)
+        {
+            AudioManager.Instance.StopFootstep();
+        }
+        else
+        {
+            AudioManager.Instance.PlayFootstep();
+        }
     }
+
 }
