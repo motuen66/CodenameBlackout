@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+    // Assign to Player GameObject in Unity
     public class ItemController : MonoBehaviour
     {
         public static ItemController Instance { get; private set; }
@@ -73,14 +74,15 @@ namespace Assets.Scripts
                     if (BombController.Instance.bombsRemaining < 2)
                     {
                         BombController.Instance.bombsRemaining++;
+                        Debug.Log($"Bomb explosion, Bombs remaining: {BombController.Instance.bombsRemaining}");
                     }
                     Debug.Log("BombPlus +1");
                 },
                 () => {
-                    if (BombController.Instance.bombsRemaining >= 2)
-                    {
+                    //if (BombController.Instance.bombsRemaining >= 2)
+                    //{
                         BombController.Instance.bombsRemaining--;
-                    }
+                    //}
                     Debug.Log("BombPlus -1");
                 }
             );
