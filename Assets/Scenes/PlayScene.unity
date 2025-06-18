@@ -7448,6 +7448,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8193650742775797654, guid: c2884b7c16fda1d439b593dcbf000ede, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7946,7 +7950,7 @@ GameObject:
   - component: {fileID: 707834424}
   m_Layer: 7
   m_Name: Destructibles
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8615,7 +8619,7 @@ MonoBehaviour:
   visionBlockingMask:
     serializedVersion: 2
     m_Bits: 392
-  alertSpeed: 2
+  alertSpeed: 3
   speedBoostDuration: 5
 --- !u!4 &721884458 stripped
 Transform:
@@ -17594,7 +17598,7 @@ GameObject:
   - component: {fileID: 1439528306}
   m_Layer: 8
   m_Name: Indestructibles
-  m_TagString: Untagged
+  m_TagString: Indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
