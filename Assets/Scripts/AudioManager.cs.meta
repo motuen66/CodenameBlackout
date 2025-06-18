@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 24727b96f87dd314ebe0becf9c2aab1a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - footstepSource: {instanceID: 0}
+  - sfxSource: {instanceID: 0}
+  - explosionClip: {instanceID: 0}
+  - fuseBombClip: {instanceID: 0}
+  - pickItemClip: {instanceID: 0}
+  - footstepClip: {fileID: 8300000, guid: e14bae7dd45f23c4e9fbf0818f3c600f, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

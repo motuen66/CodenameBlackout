@@ -89,9 +89,11 @@ public class BombController : MonoBehaviour
 
     private IEnumerator PlaceBombRoutine()
     {
+        // Play the fuse sound effect when a bomb is placed.
+        AudioManager.Instance.PlayFuseSound();
         // Get the player's current position.
         Vector2 currentPlayerPosition = transform.position;
-
+        
         // Calculate the center position of the grid cell the player is currently on.
         Vector2 bombPlacementPosition = new Vector2(
             Mathf.Floor(currentPlayerPosition.x) + 0.5f,
@@ -104,7 +106,7 @@ public class BombController : MonoBehaviour
 
         // Wait for the bomb's fuse time.
         yield return new WaitForSeconds(bombFuseTime);
-
+        AudioManager.Instance.PlayExplosionSound();
         // Instantiate the explosion at the bomb's position (not the player's position)
         if (currentExplosionPrefab != null)
         {
@@ -127,16 +129,19 @@ public class BombController : MonoBehaviour
         {
             itemController.StartBombPlusTemporary();
             Destroy(collision.gameObject);
+            AudioManager.Instance.PlayPickItemSound();
         }
         else if (touchObjectName == explosionPart.ItemExtraRangePrefap.name)
         {
             itemController.StartBombExtraRangeTemporary();
             Destroy(collision.gameObject);
+            AudioManager.Instance.PlayPickItemSound();
         }
         else if (touchObjectName == explosionPart.ItemSpiritPrefab.name)
         {
             itemController.StartSpeedUpTemporary();
             Destroy(collision.gameObject);
+            AudioManager.Instance.PlayPickItemSound();
         }
     }
 }
