@@ -7,6 +7,7 @@ TagManager:
   - Destructible
   - Indestructible
   - Enemy
+  - Target
   layers:
   - Default
   - TransparentFX

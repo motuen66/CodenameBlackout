@@ -78,7 +78,11 @@ public class ExplosionPart : MonoBehaviour
                 // TODO: Xử lý logic Player chết ở đây (ví dụ: gọi hàm Die() của Player, tải lại scene, v.v.)
             }
         }
-        // Có thể thêm các tag khác nếu cần (ví dụ: "Enemy", "Bomb", v.v.)
+        else if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy destroyed by explosion!");
+            Destroy(other.gameObject);
+        }
     }
 
     // Hàm spawn item ngẫu nhiên tại vị trí block bị phá hủy
