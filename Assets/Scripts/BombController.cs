@@ -70,42 +70,48 @@ public class BombController : MonoBehaviour
     private IEnumerator PlaceBombRoutine()
     {
         // Get the player's current position.
+        Debug.Log($"Placed bomb ");
+        AudioManager.Instance.PlayFuseSound();
         Vector2 currentPlayerPosition = transform.position;
-
-        // Calculate the center position of the grid cell the player is currently on.
         Vector2 bombPlacementPosition = new Vector2(
             Mathf.Floor(currentPlayerPosition.x) + 0.5f,
             Mathf.Floor(currentPlayerPosition.y) + 0.5f
         );
 
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(bombPlacementPosition, 0.2f);
-        //foreach (var col in colliders)
-        //{
-        //    if (col.CompareTag("Bomb"))
-        //    {
-        //        Debug.Log("Đã có bom tại vị trí này, không đặt thêm.");
-        //        yield break;
-        //    }
-        //}
-
-        // Instantiate a bomb prefab at the calculated center of the grid cell.   
         GameObject bomb = Instantiate(bombPrefab, bombPlacementPosition, Quaternion.identity);
         //bomb.tag = "Bomb";
         bombsRemaining--; // Decrease the count of bombs available to place.
         //Debug.Log($"Bom đã đặt. bombsRemaining: {bombsRemaining}");
+        bombsRemaining--;
+        bomb.tag = $"Bomb-{2 - bombsRemaining}";
+        Debug.Log($"Placed bomb, Bombs remaining: {bombsRemaining}");
 
-        // Wait for the bomb's fuse time.
         yield return new WaitForSeconds(bombFuseTime);
 
         // Instantiate the explosion at the bomb's position (not the player's position)
         if (explosionPrefab != null)
+        AudioManager.Instance.PlayExplosionSound();
+
+        // Gọi explosion tại vị trí bomb
+        if (currentExplosionPrefab != null)
         {
             Instantiate(explosionPrefab, bomb.transform.position, Quaternion.identity);
+            // Tạo vụ nổ trung tâm
+            Instantiate(currentExplosionPrefab, bomb.transform.position, Quaternion.identity);
+
+            // Gọi các hướng nổ
+            int explosionRange = 2; // hoặc lấy từ player/item
+            ExplosionPart.Instance.SpawnExplosionLine((Vector2)bomb.transform.position, Vector2.up, explosionRange, currentExplosionPrefab);
+            ExplosionPart.Instance.SpawnExplosionLine((Vector2)bomb.transform.position, Vector2.down, explosionRange, currentExplosionPrefab);
+            ExplosionPart.Instance.SpawnExplosionLine((Vector2)bomb.transform.position, Vector2.left, explosionRange, currentExplosionPrefab);
+            ExplosionPart.Instance.SpawnExplosionLine((Vector2)bomb.transform.position, Vector2.right, explosionRange, currentExplosionPrefab);
+            Destroy(bomb);
         }
 
-        // Destroy the bomb GameObject after the fuse time expires.
         Destroy(bomb);
         bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
+        bombsRemaining++;
+        Debug.Log($"Bomb explosion, Bombs remaining: {bombsRemaining}");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

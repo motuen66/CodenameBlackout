@@ -130,6 +130,12 @@ public class ExplosionPart : MonoBehaviour
     {
         if (other.CompareTag("Indestructible"))
         {
+            // Vụ nổ bị chặn lại bởi vật thể không phá hủy, hủy phần nổ này.
+            if (spriteRenderer != null) spriteRenderer.enabled = false;
+            if (animator != null) animator.enabled = false;
+            // Tắt collider để không còn va chạm nữa
+            Collider2D col = GetComponent<Collider2D>();
+            if (col != null) col.enabled = false;
             Destroy(gameObject);
         }
         else if (other.CompareTag("Destructible"))
@@ -181,6 +187,31 @@ public class ExplosionPart : MonoBehaviour
             case "ItemSpirit": return ItemSpiritPrefab;
             case "ItemExtraRange": return ItemExtraRangePrefap;
             default: return null;
+        }
+    }
+
+    // Gọi hàm này khi bomb nổ, cho từng hướng (up, down, left, right)
+    public void  SpawnExplosionLine(Vector2 startPos, Vector2 direction, int range, GameObject explosionPrefab)
+    {
+        for (int i = 1; i <= range; i++)
+        {
+            Vector2 checkPos = startPos + direction * i;
+            // Kiểm tra có indestructible không
+            Collider2D hit = Physics2D.OverlapPoint(checkPos, LayerMask.GetMask("Indestructible"));
+            if (hit != null)
+            {
+                // Gặp indestructible, dừng không spawn nữa
+                break;
+            }
+            // Nếu không có indestructible, spawn explosion part
+            Instantiate(explosionPrefab, checkPos, Quaternion.identity);
+
+            // Nếu gặp destructible, spawn explosion part rồi dừng luôn
+            Collider2D destructible = Physics2D.OverlapPoint(checkPos, LayerMask.GetMask("Destructible"));
+            if (destructible != null)
+            {
+                break;
+            }
         }
     }
 }
