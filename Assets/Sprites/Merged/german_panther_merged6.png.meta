@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      german_panther_merged6_0: -5831318458651759887
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
