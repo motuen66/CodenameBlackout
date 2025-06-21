@@ -1,23 +1,22 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject PauseMenu;
-     
-    public void PlayGame()
+    
+
+    private void Awake()
     {
-        SceneManager.LoadSceneAsync(1);
+        GameManager.OnGameStateChanged += HandleGameStateChanged;
     }
 
-    public void QuitGame()
+    private void OnDestroy()
     {
-        Application.Quit();
+        GameManager.OnGameStateChanged -= HandleGameStateChanged;
     }
 
-    public void PauseGame()
+    private void HandleGameStateChanged(GameState state)
     {
-        Time.timeScale = 0f;
     }
 }

@@ -61,7 +61,7 @@ public class MovementController : MonoBehaviour
     private void Update()
     {
         // Read input from Input System
-        Vector2 input = moveAction.ReadValue<Vector2>();
+        Vector2 input = moveAction.ReadValue<Vector2>() * Time.deltaTime;
 
         // Determine direction and animation
         if (input.y > 0)

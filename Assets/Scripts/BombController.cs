@@ -150,8 +150,7 @@ public class BombController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log($"lose game");
-            // Thêm logic lose game ở đây nếu cần
+            GameManager.Instance.UpdateGameState(GameState.GameOver);
         }
     }
 }
