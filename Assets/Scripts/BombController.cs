@@ -1,21 +1,33 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem; // Required for the new Input System
 
 public class BombController : MonoBehaviour
 {
+    public static BombController Instance { get; private set; }
+
     [Header("Input System")]
     // Reference to your Input Actions Asset.
     // Drag and drop the PlayerInputActions asset (created in previous steps) here in the Inspector.
     public PlayerInputActions inputActions;
 
     [Header("Bomb Settings")]
-    public GameObject explosionPrefab; // Add this line under Bomb Settings
+    public GameObject explosionDefaultPrefab;
     public GameObject explosionExtraRangePrefab;
+    public GameObject currentExplosionPrefab;
     public GameObject bombPrefab; // Prefab of the bomb object
     public float bombFuseTime = 3f; // Time until the bomb "explodes" (used for despawning for now)
-    public int bombAmount = 2; // Maximum number of bombs the player can place simultaneously
-    private int bombsRemaining; // Current count of bombs the player can still place
+    public int bombAmount = 1; // Maximum number of bombs the player can place simultaneously
+    public int bombsRemaining; // Current count of bombs the player can still place
+
+    private void Start()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     private void Awake()
     {
@@ -30,6 +42,14 @@ public class BombController : MonoBehaviour
         // When the "PlaceBomb" action is performed (e.g., button pressed and released),
         // the OnPlaceBomb method will be called.
         inputActions.Player.PlaceBomb.performed += OnPlaceBomb;
+        if (explosionDefaultPrefab != null)
+        {
+            currentExplosionPrefab = explosionDefaultPrefab;
+        }
+        else
+        {
+            Debug.LogError("Explosion Default Prefab is not assigned!");
+        }
     }
 
     private void OnEnable()
@@ -79,7 +99,6 @@ public class BombController : MonoBehaviour
         );
 
         GameObject bomb = Instantiate(bombPrefab, bombPlacementPosition, Quaternion.identity);
-        //bomb.tag = "Bomb";
         bombsRemaining--; // Decrease the count of bombs available to place.
         //Debug.Log($"Bom đã đặt. bombsRemaining: {bombsRemaining}");
         bombsRemaining--;
@@ -114,26 +133,26 @@ public class BombController : MonoBehaviour
         Debug.Log($"Bomb explosion, Bombs remaining: {bombsRemaining}");
     }
 
+    // Tracking player collides with items
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ExplosionPart explosionPart = ExplosionPart.Instance;
+        ItemController itemController = ItemController.Instance;
         string touchObjectName = collision.gameObject.name.Split("(Clone)")[0];
 
-        //Debug.Log(touchObjectName + "111");
-        //Debug.Log(explosionPart.ItemExtraBombPrefap.name + "111");
         if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
         {
-            bombAmount++;
+            itemController.StartBombPlusTemporary();
             Destroy(collision.gameObject);
         }
         else if (touchObjectName == explosionPart.ItemExtraRangePrefap.name)
         {
-            //explosionPrefab = explosionPart.explosionExtraRangePrefab1;
+            itemController.StartBombExtraRangeTemporary();
             Destroy(collision.gameObject);
         }
         else if (touchObjectName == explosionPart.ItemSpiritPrefab.name)
         {
-            MovementController.Instance.speed += 3f;
+            itemController.StartSpeedUpTemporary();
             Destroy(collision.gameObject);
         }
     }
