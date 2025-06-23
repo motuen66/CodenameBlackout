@@ -5606,7 +5606,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 65872076}
   GameOverMenu: {fileID: 1401001142}
   WinMenu: {fileID: 1310223961}
-  MissionBriefMenu: {fileID: 0}
+  MissionBriefMenu: {fileID: 1780573992}
 --- !u!1001 &575612389
 PrefabInstance:
   m_ObjectHideFlags: 0
