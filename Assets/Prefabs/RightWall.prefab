@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3870298651451066233}
   - component: {fileID: 539269150964269138}
   - component: {fileID: 53627708824422588}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightWall
   m_TagString: Indestructible
   m_Icon: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 750329931
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 839997636, guid: 75e4cd8af4d3d9f458c06d5c433c7bda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

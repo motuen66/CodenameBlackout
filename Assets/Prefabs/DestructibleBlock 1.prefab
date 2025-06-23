@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3142545407745836783}
   - component: {fileID: 5862036046001839801}
   - component: {fileID: 8568511157948404200}
-  m_Layer: 0
+  - component: {fileID: 3639776733465541214}
+  m_Layer: 7
   m_Name: DestructibleBlock 1
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -145,5 +146,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ffef0d71a1633b4eb2c6080d1b2ceab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3639776733465541214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877845333041216219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39c4586c05379d4e9f5aa65a4bfab29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -10,7 +10,7 @@ public class MovementController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 direction = Vector2.down;
     public float speed = 5f;
-    public float maxSpeed = 8f;
+    public float maxSpeed = 7f;
     public float minSpeed = 5f;
 
     [Header("Sprites")]
@@ -61,7 +61,7 @@ public class MovementController : MonoBehaviour
     private void Update()
     {
         // Read input from Input System
-        Vector2 input = moveAction.ReadValue<Vector2>();
+        Vector2 input = moveAction.ReadValue<Vector2>() * Time.deltaTime;
 
         // Determine direction and animation
         if (input.y > 0)
@@ -97,6 +97,7 @@ public class MovementController : MonoBehaviour
     {
         direction = newDirection;
 
+        // Chuyển hướng hiển thị sprite
         spriteRendererUp.enabled = spriteRenderer == spriteRendererUp;
         spriteRendererDown.enabled = spriteRenderer == spriteRendererDown;
         spriteRendererLeft.enabled = spriteRenderer == spriteRendererLeft;
@@ -104,5 +105,16 @@ public class MovementController : MonoBehaviour
 
         activeSpriteRenderer = spriteRenderer;
         activeSpriteRenderer.idle = direction == Vector2.zero;
+
+        // Thêm xử lý âm thanh bước chân
+        if (direction == Vector2.zero)
+        {
+            AudioManager.Instance.StopFootstep();
+        }
+        else
+        {
+            AudioManager.Instance.PlayFootstep();
+        }
     }
+
 }

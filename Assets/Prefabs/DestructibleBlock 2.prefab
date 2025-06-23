@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7992342801842622112}
   - component: {fileID: 6500696765850671969}
   - component: {fileID: 816363054912970203}
-  m_Layer: 0
+  - component: {fileID: -7360901770638136526}
+  m_Layer: 7
   m_Name: DestructibleBlock 2
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -147,3 +148,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.97563076, y: 0.96874094}
   m_EdgeRadius: 0
+--- !u!114 &-7360901770638136526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6510826812863897189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39c4586c05379d4e9f5aa65a4bfab29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
