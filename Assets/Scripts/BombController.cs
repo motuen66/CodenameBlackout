@@ -89,6 +89,7 @@ public class BombController : MonoBehaviour
 
     private IEnumerator PlaceBombRoutine()
     {
+        Debug.Log($"Placed bomb ");
         // Play the fuse sound effect when a bomb is placed.
         AudioManager.Instance.PlayFuseSound();
         // Get the player's current position.
@@ -146,6 +147,10 @@ public class BombController : MonoBehaviour
             itemController.StartSpeedUpTemporary();
             Destroy(collision.gameObject);
             AudioManager.Instance.PlayPickItemSound();
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            GameManager.Instance.UpdateGameState(GameState.GameOver);
         }
     }
 }

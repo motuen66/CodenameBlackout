@@ -11,7 +11,7 @@ public class ExplosionPart : MonoBehaviour
     public static ExplosionPart Instance { get; private set; }
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    private static bool playerDead = false; // Biến static để kiểm soát log chết của người chơi
+    //private static bool playerDead = false; // Biến static để kiểm soát log chết của người chơi
 
     [Header("Items")]
     public GameObject ItemExtraBombPrefap;
@@ -70,15 +70,26 @@ public class ExplosionPart : MonoBehaviour
         // Kiểm tra va chạm với Player
         else if (other.CompareTag("Player"))
         {
-            // Chỉ log "da chet" một lần duy nhất
-            if (!playerDead)
-            {
+            // Chỉ log "da chet" một lần duy nhất???? Ai mượn 
+            //if (!playerDead)
+            //{
                 Debug.Log("da chet");
-                playerDead = true; // Đặt cờ playerDead thành true
+                //playerDead = true; // Đặt cờ playerDead thành true
                 // TODO: Xử lý logic Player chết ở đây (ví dụ: gọi hàm Die() của Player, tải lại scene, v.v.)
-            }
+                //GameManager.Instance.GameOver();
+                GameManager.Instance.UpdateGameState(GameState.GameOver);
+            //}
         }
-        // Có thể thêm các tag khác nếu cần (ví dụ: "Enemy", "Bomb", v.v.)
+        else if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy destroyed by explosion!");
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Target"))
+        {
+            Destroy(other.gameObject);
+            GameManager.Instance.UpdateGameState(GameState.Win);
+        }
     }
 
     // Hàm spawn item ngẫu nhiên tại vị trí block bị phá hủy
