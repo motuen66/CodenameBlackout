@@ -73,7 +73,6 @@ public class ExplosionPart : MonoBehaviour
             // Chỉ log "da chet" một lần duy nhất???? Ai mượn 
             //if (!playerDead)
             //{
-                Debug.Log("da chet");
                 //playerDead = true; // Đặt cờ playerDead thành true
                 // TODO: Xử lý logic Player chết ở đây (ví dụ: gọi hàm Die() của Player, tải lại scene, v.v.)
                 //GameManager.Instance.GameOver();
@@ -82,7 +81,6 @@ public class ExplosionPart : MonoBehaviour
         }
         else if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy destroyed by explosion!");
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Target"))

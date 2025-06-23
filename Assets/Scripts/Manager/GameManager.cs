@@ -63,10 +63,9 @@ public class GameManager : MonoBehaviour
 
     public void ShowWinScore()
     {
-        //int score = ScoreManager.Instance.CalculateTotalScore();
-        //Debug.Log("Total Score: " + score);
-        WinMenu.SetActive(true);
         Time.timeScale = 0f;
+        ScoreManager.Instance.ShowTotalScore();
+        WinMenu.SetActive(true);
     }
 
     public void QuitGame()
@@ -99,11 +98,18 @@ public class GameManager : MonoBehaviour
         if (GameOverMenu != null && GameOverMenu.activeSelf)
         {
             GameOverMenu.SetActive(false);
+            ScoreManager.Instance.ResetScore();
         }
 
         if (PauseMenu != null && PauseMenu.activeSelf)
         {
             PauseMenu.SetActive(false);
+        }
+
+        if (WinMenu != null && WinMenu.activeSelf)
+        {
+            WinMenu.SetActive(false);
+            ScoreManager.Instance.ResetScore();
         }
 
         SceneManager.LoadSceneAsync(level);
@@ -119,10 +125,6 @@ public class GameManager : MonoBehaviour
         {
             PauseGame();
         }
-        //if (level > 0 && MissionBriefMenu != null && !MissionBriefMenu.activeSelf)
-        //{
-        //    MissionBriefMenu.SetActive(true);
-        //}
     }
 
     public void GameOver()
@@ -137,6 +139,8 @@ public class GameManager : MonoBehaviour
         if (MissionBriefMenu.activeSelf)
         {
             MissionBriefMenu.SetActive(false);
+            UpdateGameState(GameState.Playing);
+            ScoreManager.Instance.StartCountDown();
         }
     }
 }

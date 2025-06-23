@@ -350,7 +350,6 @@ public class GuardPathfindingPatrol : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("IsMoving", false);
 
-        Debug.Log("Guard " + gameObject.name + " reached waypoint " + currentWaypointIndex + ". Waiting.");
         yield return new WaitForSeconds(waitTime);
 
         isWaiting = false;

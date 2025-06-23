@@ -33,10 +33,10 @@ public class DestructibleBlock : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Make sure the Collider of the explosion area is tagged as "BombExplosion".
-        if (other.CompareTag("BombExplosion"))
-        {
-            DestroyBlock(); // Call the method to destroy this block
-        }
+        //if (other.CompareTag("BombExplosion"))
+        //{
+        //    DestroyBlock(); // Call the method to destroy this block
+        //}
     }
 
     // OnDestroy() can be a backup if DestroyBlock() is not guaranteed to be called.

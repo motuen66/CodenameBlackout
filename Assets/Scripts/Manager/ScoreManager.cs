@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -15,16 +16,20 @@ namespace Assets.Scripts
     public class ScoreManager : MonoBehaviour
     {
         public static ScoreManager Instance { get; private set; }
-        private int InitScore { get; set; } = 300;
+        private int InitScore { get; set; } = 1000;
 
-        private readonly int RedGuardKilledScore = 50;
+        private readonly int RedGuardKilledScore = 500;
 
-        private readonly int YellowGuardKilledScore = 30;
+        private readonly int YellowGuardKilledScore = 300;
 
-        private int totalSecondToCompleteLevel { get; set; } = 0;
+        private int TotalSecondToCompleteLevel { get; set; } = 0;
 
-        public int TotalScore { get; private set; } = 0;
+        public int EarningScore { get; private set; } = 0;
 
+        [SerializeField]
+        private TextMeshProUGUI CountDownText;
+        [SerializeField]
+        private TextMeshProUGUI ScoreText;
 
         private void Start()
         {
@@ -33,7 +38,6 @@ namespace Assets.Scripts
                 Instance = this;
             }
             GameManager.OnGameStateChanged += OnGameStateChanged;
-            StartCoroutine(CountSeconds());
         }
 
         private void OnDestroy()
@@ -41,12 +45,19 @@ namespace Assets.Scripts
             GameManager.OnGameStateChanged -= OnGameStateChanged;
         }
 
+        public void StartCountDown()
+        {
+            Debug.Log("StartCountDown called");
+            TotalSecondToCompleteLevel = 0;
+            StartCoroutine(CountSeconds());
+        }
+
         private void OnGameStateChanged(GameState state)
         {
-            if (state == GameState.Win)
-            {
-                totalSecondToCompleteLevel = 0;
-            }
+            //if (state == GameState.Win)
+            //{
+            //    TotalSecondToCompleteLevel = 0;
+            //}
         }
 
         private IEnumerator CountSeconds()
@@ -54,13 +65,40 @@ namespace Assets.Scripts
             while (GameManager.Instance.CurrentGameState == GameState.Playing)
             {
                 yield return new WaitForSeconds(1f);
-                totalSecondToCompleteLevel++;
+                TotalSecondToCompleteLevel++;
+                CountDownText.text = FormatTime(TotalSecondToCompleteLevel);
+                if (CountDownText == null)
+                {
+                    Debug.LogError("CountDownText chưa được gán!");
+                } else if (CountDownText.text == null)
+                {
+                    Debug.LogError("CountDownText.text chưa được gán!");
+                }
+                Debug.Log(FormatTime(TotalSecondToCompleteLevel));
             }
         }
 
-        public int CalculateTotalScore() => InitScore - totalSecondToCompleteLevel;
+        public void KillRedGuard() => EarningScore += RedGuardKilledScore;
+        public void KillYelloGuard() => EarningScore += YellowGuardKilledScore;
 
-        public void KillRedGuard() => TotalScore += RedGuardKilledScore;
-        public void KillYelloGuard() => TotalScore += YellowGuardKilledScore;
+        private string FormatTime(int seconds)
+        {
+            int minutes = seconds / 60;
+            seconds = seconds % 60;
+            return $"{minutes:D2}:{seconds:D2}";
+        }
+
+        internal void ShowTotalScore()
+        {
+            Debug.Log($"{TotalSecondToCompleteLevel} {EarningScore}");
+            int score = InitScore - TotalSecondToCompleteLevel + EarningScore;
+            ScoreText.text = score.ToString();
+        }
+
+        public void ResetScore()
+        {
+            EarningScore = 0;
+            TotalSecondToCompleteLevel = 0;
+        }
     }
 }

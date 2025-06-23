@@ -29,8 +29,6 @@ public class AudioManager : MonoBehaviour
     public void PlayExplosionSound()
     {
         sfxSource.PlayOneShot(explosionClip, 0.7f);
-        Debug.Log("Playing explosion sound");
-        
     }
 
 
