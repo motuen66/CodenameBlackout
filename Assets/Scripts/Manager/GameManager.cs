@@ -1,4 +1,4 @@
-using Assets.Scripts;
+﻿using Assets.Scripts;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log("Total Score: " + score);
         WinMenu.SetActive(true);
         Time.timeScale = 0f;
+        AudioManager.Instance.PlayWinSound();
     }
 
     public void QuitGame()
@@ -127,10 +128,18 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Debug.Log("GameOver triggered");
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayLoseSound();
+
         Time.timeScale = 0f;
         GameOverMenu.SetActive(true);
-        UpdateGameState(GameState.GameOver);
+
+        // ❌ BỎ dòng dưới
+        // UpdateGameState(GameState.GameOver);
     }
+
 
     public void HideMissionBriefMenu()
     {
