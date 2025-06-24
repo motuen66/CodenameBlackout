@@ -12979,6 +12979,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8340de810e04e4abbb96bc73fd7b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderWrapper: {fileID: 0}
+  bombPlusSlider: {fileID: 0}
+  bombExtraRangeSlider: {fileID: 0}
+  speedUpSlider: {fileID: 0}
 --- !u!114 &1174458275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19164,12 +19168,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1528789545}
   - {fileID: 1015334448}
   - {fileID: 572383716}
   - {fileID: 47630853}
   - {fileID: 1982182867}
   - {fileID: 817661551}
+  - {fileID: 1775605774}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -19886,58 +19890,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2586320996992611965, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
   m_PrefabInstance: {fileID: 1525642050}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1528789544
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1528789545}
-  - component: {fileID: 1528789546}
-  m_Layer: 5
-  m_Name: CountDownWrapper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1528789545
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528789544}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1465156049}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1528789546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528789544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1cabe48bd186be42b0cb4749b87b532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombPlusSlider: {fileID: 3988534536460558932, guid: fdd488c2016506a42b9ed23da461ebe5, type: 3}
-  bombExtraRangeSlider: {fileID: 682771498752632443, guid: a3540c6608f169f4ab9dae9e3ed5c568, type: 3}
-  speedUpSlider: {fileID: 6244475137217407161, guid: 7d4e3dfb6348e5843b75d861bdd2416a, type: 3}
-  sliderWrapper: {fileID: 1528789545}
 --- !u!1001 &1530836281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22187,6 +22139,58 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3908718032554845863, guid: 22fd950633e62fc4090de1a7698fdf86, type: 3}
   m_PrefabInstance: {fileID: 1203163986}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1775605773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1775605774}
+  - component: {fileID: 1775605775}
+  m_Layer: 5
+  m_Name: SliderBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1775605774
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775605773}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3999143, y: 2.3999143, z: 2.3999143}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1465156049}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000018119812, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1775605775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775605773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8340de810e04e4abbb96bc73fd7b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderWrapper: {fileID: 1775605774}
+  bombPlusSlider: {fileID: 340474564044128710, guid: 6b664cc636a68184397fb9ca62ba5c95, type: 3}
+  bombExtraRangeSlider: {fileID: 8775200511849744866, guid: b465bb9125d54d041b6106b1ccac8ae9, type: 3}
+  speedUpSlider: {fileID: 7721769903536432190, guid: 3a1048da49942cd4eafe50a5ece9835a, type: 3}
 --- !u!1 &1787841912
 GameObject:
   m_ObjectHideFlags: 0

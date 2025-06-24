@@ -82,7 +82,6 @@ public class ExplosionPart : MonoBehaviour
         }
         else if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy destroyed by explosion!");
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Target"))

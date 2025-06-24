@@ -55,8 +55,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        Debug.Log("Current Game State: " + CurrentGameState);
-        Debug.Log("Current Time Scale: " + Time.timeScale);
+        Debug.Log("State change to: " + CurrentGameState);
 
         OnGameStateChanged?.Invoke(newState);
     }
@@ -127,6 +126,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        //if (CurrentGameState == GameState.GameOver) return;
         Time.timeScale = 0f;
         GameOverMenu.SetActive(true);
         UpdateGameState(GameState.GameOver);
