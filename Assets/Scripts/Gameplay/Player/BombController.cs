@@ -89,7 +89,6 @@ public class BombController : MonoBehaviour
 
     private IEnumerator PlaceBombRoutine()
     {
-        Debug.Log($"Placed bomb ");
         // Play the fuse sound effect when a bomb is placed.
         AudioManager.Instance.PlayFuseSound();
         // Get the player's current position.
@@ -104,8 +103,6 @@ public class BombController : MonoBehaviour
         // Instantiate a bomb prefab at the calculated center of the grid cell.   
         GameObject bomb = Instantiate(bombPrefab, bombPlacementPosition, Quaternion.identity);
         bombsRemaining--; // Decrease the count of bombs available to place.
-        bomb.tag = $"Bomb-{2 - bombsRemaining}";
-        Debug.Log($"Placed bomb, Bombs remaining: {bombsRemaining}");
 
         // Wait for the bomb's fuse time.
         yield return new WaitForSeconds(bombFuseTime);
@@ -119,7 +116,6 @@ public class BombController : MonoBehaviour
         // Destroy the bomb GameObject after the fuse time expires.
         Destroy(bomb);
         bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
-        Debug.Log($"Bomb explosion, Bombs remaining: {bombsRemaining}");
     }
 
     // Tracking player collides with items
