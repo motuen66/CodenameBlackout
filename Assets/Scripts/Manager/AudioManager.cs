@@ -15,6 +15,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip loseClip;
     public AudioClip winClip;
 
+
+
+
+
     private void Awake()
     {
         if (Instance == null)

@@ -1,33 +1,51 @@
 ﻿using UnityEngine;
+using System.Collections; // Kept in case you want to use Coroutines for other logic later.
 
 public class DestructibleBlock : MonoBehaviour
 {
-    // This method is called when the block should be destroyed.
+    // This method will be called when the block is destroyed (e.g., by a bomb explosion).
+    // You can call this method directly from the bomb script or its explosion area.
     public void DestroyBlock()
     {
         Debug.Log(gameObject.name + " is destroyed!");
 
-        // Refreshes the pathfinding grid after the block is destroyed.
+        // Call RefreshGridData on the PathfindingGridManager to update the grid.
+        // Always check if Instance != null to avoid errors if the GridManager was destroyed earlier.
+        // Also check Application.isPlaying to prevent execution when exiting the editor.
         if (Application.isPlaying && PathfindingGridManager.Instance != null)
         {
+            // --- FIX APPLIED HERE: Changed from RefreshGrid() to RefreshGridData() ---
             PathfindingGridManager.Instance.RefreshGridData();
+            // --- END OF FIX ---
         }
-        else if (Application.isPlaying)
+        else if (Application.isPlaying) // Log a warning if the Instance is null during Play Mode
         {
             Debug.LogWarning("PathfindingGridManager.Instance is null. Cannot refresh grid on DestroyBlock call.");
         }
 
-        // Destroys this GameObject.
-        Destroy(gameObject);
+        // Destroy this GameObject immediately.
+        // You can uncomment the line below to actually destroy the block.
+        Destroy(gameObject); // Uncommented to ensure the block is actually destroyed
     }
 
-    // Called when another collider enters this block's trigger collider.
-    void OnTriggerEnter2D(Collider2D other)
+    // Optional: Use OnTriggerEnter2D if the bomb explosion area uses a Trigger Collider
+    // and is tagged with something like "BombExplosion".
+
+    // OnDestroy() can be a backup if DestroyBlock() is not guaranteed to be called.
+    // However, if you always call DestroyBlock(), this might be unnecessary.
+    // If you choose to keep it, ensure that it doesn’t result in RefreshGrid() being called twice.
+    /*
+    void OnDestroy()
     {
-        // If the colliding object is tagged "BombExplosion", destroy this block.
-        if (other.CompareTag("BombExplosion"))
+        // Always check Application.isPlaying to avoid issues when exiting the Editor
+        if (Application.isPlaying)
         {
-            DestroyBlock();
+            if (PathfindingGridManager.Instance != null)
+            {
+                // Ensure to call RefreshGridData() here as well if you uncomment this
+                // PathfindingGridManager.Instance.RefreshGridData();
+            }
         }
     }
+    */
 }
