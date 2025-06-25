@@ -44,50 +44,65 @@ public class ExplosionPart : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnEnable()
     {
-        // Kiểm tra va chạm với vật thể không phá hủy được
-        if (other.CompareTag("Indestructible"))
+        CheckOverlapAndHandle();
+    }
+
+    private void CheckOverlapAndHandle()
+    {
+        BoxCollider2D box = GetComponent<BoxCollider2D>();
+        if (box == null)
         {
-            // Vụ nổ bị chặn lại bởi vật thể không phá hủy, hủy phần nổ này.
-            Destroy(gameObject);
+            Debug.LogError("Không tìm thấy BoxCollider2D trên " + gameObject.name);
+            return;
         }
-        // Kiểm tra va chạm với vật thể có thể phá hủy
-        else if (other.CompareTag("Destructible"))
+
+        Vector2 boxSize = box.size;
+        Vector2 boxOffset = box.offset;
+        Vector2 boxCenter = (Vector2)transform.position + boxOffset;
+
+        // Lấy tất cả các Collider trong vùng overlap
+        Collider2D[] hits = Physics2D.OverlapBoxAll(boxCenter, boxSize, 0f);
+
+        foreach (Collider2D other in hits)
         {
-            // --- SỬA ĐỔI CHÍNH Ở ĐÂY ---
-            // Thay vì tự hủy vật thể, tìm component DestructibleBlock và gọi hàm DestroyBlock() của nó.
-            DestructibleBlock destructibleBlock = other.GetComponent<DestructibleBlock>();
-            if (destructibleBlock != null)
+            if (other.CompareTag("Indestructible"))
             {
-                // Vị trí của block bị phá hủy để spawn item
-                Vector2 destroyPosition = other.transform.position;
-                destructibleBlock.DestroyBlock(); // Gọi hàm DestroyBlock của DestructibleBlock
-                SpawnItemsRandom(destroyPosition); // Spawn item tại vị trí block bị phá hủy
+                Debug.Log(this.name + " bị ngăn bởi " + other.name);
+                Destroy(gameObject);
+                return;
             }
-            // --- KẾT THÚC SỬA ĐỔI ---
         }
-        // Kiểm tra va chạm với Player
-        else if (other.CompareTag("Player"))
+
+        foreach (Collider2D other in hits)
         {
-            // Chỉ log "da chet" một lần duy nhất???? Ai mượn 
-            //if (!playerDead)
-            //{
+            if (other.CompareTag("Destructible"))
+            {
+                DestructibleBlock destructibleBlock = other.GetComponent<DestructibleBlock>();
+                if (destructibleBlock != null)
+                {
+                    Vector2 destroyPosition = other.transform.position;
+                    destructibleBlock.DestroyBlock();
+                    Debug.Log(this.name + " phá hủy  " + other.name);
+                    SpawnItemsRandom(destroyPosition);
+                }
+            }
+            else if (other.CompareTag("Player"))
+            {
                 Debug.Log("da chet");
-                //playerDead = true; // Đặt cờ playerDead thành true
-                // TODO: Xử lý logic Player chết ở đây (ví dụ: gọi hàm Die() của Player, tải lại scene, v.v.)
-                //GameManager.Instance.GameOver();
                 GameManager.Instance.UpdateGameState(GameState.GameOver);
-            //}
-        }
-        else if (other.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Target"))
-        {
-            Destroy(other.gameObject);
-            GameManager.Instance.UpdateGameState(GameState.Win);
+            }
+            else if (other.CompareTag("Enemy"))
+            {
+                Debug.Log("Enemy destroyed by explosion!");
+                Destroy(other.gameObject);
+            }
+            else if (other.CompareTag("Target"))
+            {
+                Destroy(other.gameObject);
+                GameManager.Instance.UpdateGameState(GameState.Win);
+            }
         }
     }
 
