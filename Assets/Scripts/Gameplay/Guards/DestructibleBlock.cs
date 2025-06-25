@@ -30,14 +30,6 @@ public class DestructibleBlock : MonoBehaviour
 
     // Optional: Use OnTriggerEnter2D if the bomb explosion area uses a Trigger Collider
     // and is tagged with something like "BombExplosion".
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // Make sure the Collider of the explosion area is tagged as "BombExplosion".
-        if (other.CompareTag("BombExplosion"))
-        {
-            DestroyBlock(); // Call the method to destroy this block
-        }
-    }
 
     // OnDestroy() can be a backup if DestroyBlock() is not guaranteed to be called.
     // However, if you always call DestroyBlock(), this might be unnecessary.

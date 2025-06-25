@@ -15,6 +15,16 @@ namespace Assets.Scripts
 
         private Dictionary<ItemType, Coroutine> activeEffectCoroutine = new Dictionary<ItemType, Coroutine>();
 
+        [Header("Sliders")]
+        [SerializeField]
+        private Transform sliderWrapper;
+        [SerializeField]
+        private GameObject bombPlusSlider;
+        [SerializeField]
+        private GameObject bombExtraRangeSlider;
+        [SerializeField]
+        private GameObject speedUpSlider;
+
         private void Start()
         {
             if (Instance == null)
@@ -31,34 +41,35 @@ namespace Assets.Scripts
             }
         }
 
-        private void StartEffect(
-            ItemType itemType,
-            GameObject sliderPrefab,
-            float duration,
-            Color color,
-            Action onStart,
-            Action onEnd)
+        private void StartEffect(ItemType itemType, GameObject sliderPrefab, float duration, Action onStart, Action onEnd)
         {
-            // Nếu đã có hiệu ứng này đang chạy, dừng lại
+            // find and delete old slider if exists
             if (activeEffectCoroutine.TryGetValue(itemType, out Coroutine existingCoroutine))
             {
                 StopCoroutine(existingCoroutine);
+                activeEffectCoroutine.Remove(itemType);
+                foreach (Transform child in sliderWrapper)
+                {
+                    Console.WriteLine(child.name);
+                    if (child.name == sliderPrefab.name.ToString() + "(Clone)")
+                    {
+                        Destroy(child.gameObject);
+                        break;
+                    }
+                }
             }
 
-            // Gọi bắt đầu hiệu ứng
             onStart?.Invoke();
 
-            // Bắt đầu hiệu ứng mới
-            Coroutine newCoroutine = StartCoroutine(EffectCoroutine(itemType, duration, onEnd));
+            Coroutine newCoroutine = StartCoroutine(EffectCoroutine(sliderPrefab, itemType, duration, onEnd));
             activeEffectCoroutine[itemType] = newCoroutine;
-
-            // Gọi UI countdown
-            ItemCountDown.Instance.ShowEffectCountdown(itemType, sliderPrefab, duration, color);
         }
 
-        private IEnumerator EffectCoroutine(ItemType itemType, float duration, Action onEnd)
+        private IEnumerator EffectCoroutine(GameObject sliderPrefab, ItemType itemType, float duration, Action onEnd)
         {
+            GameObject sliderGO = Instantiate(sliderPrefab, sliderWrapper);
             yield return new WaitForSeconds(duration);
+            Destroy(sliderGO.gameObject);
             onEnd?.Invoke();
             activeEffectCoroutine.Remove(itemType);
         }
@@ -67,24 +78,15 @@ namespace Assets.Scripts
         {
             StartEffect(
                 ItemType.BombPlus,
-                ItemCountDown.Instance.bombPlusSlider,
+                bombPlusSlider,
                 10f,
-                Color.red,
                 () => {
                     if (BombController.Instance.bombsRemaining < 2)
                     {
                         BombController.Instance.bombsRemaining++;
-                        Debug.Log($"Bomb explosion, Bombs remaining: {BombController.Instance.bombsRemaining}");
                     }
-                    Debug.Log("BombPlus +1");
                 },
-                () => {
-                    //if (BombController.Instance.bombsRemaining >= 2)
-                    //{
-                        BombController.Instance.bombsRemaining--;
-                    //}
-                    Debug.Log("BombPlus -1");
-                }
+                () => BombController.Instance.bombsRemaining = 1
             );
         }
 
@@ -92,15 +94,10 @@ namespace Assets.Scripts
         {
             StartEffect(
                 ItemType.BombExtraRange,
-                ItemCountDown.Instance.bombExtraRangeSlider,
+                bombExtraRangeSlider,
                 10f,
-                Color.yellow,
-                () => {
-                    BombController.Instance.currentExplosionPrefab = BombController.Instance.explosionExtraRangePrefab;
-                },
-                () => {
-                    BombController.Instance.currentExplosionPrefab = BombController.Instance.explosionDefaultPrefab;
-                }
+                () => BombController.Instance.currentExplosionPrefab = BombController.Instance.explosionExtraRangePrefab,
+                () => BombController.Instance.currentExplosionPrefab = BombController.Instance.explosionDefaultPrefab
             );
         }
 
@@ -108,9 +105,8 @@ namespace Assets.Scripts
         {
             StartEffect(
                 ItemType.SpeedUp,
-                ItemCountDown.Instance.speedUpSlider,
+                speedUpSlider,
                 10f,
-                Color.blue,
                 () => {
                     MovementController.Instance.speed = Mathf.Min(
                         MovementController.Instance.speed + 1f,
