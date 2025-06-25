@@ -87,8 +87,6 @@ public class BombController : MonoBehaviour
     // Coroutine to handle bomb placement, fuse time, and explosion.
     private IEnumerator PlaceBombRoutine()
     {
-        Debug.Log($"Placed bomb ");
-        // Play the bomb fuse sound effect.
         AudioManager.Instance.PlayFuseSound();
         // Get the player's current position.
         Vector2 currentPlayerPosition = transform.position;
@@ -101,10 +99,7 @@ public class BombController : MonoBehaviour
 
         // Instantiate a bomb prefab at the calculated position.
         GameObject bomb = Instantiate(bombPrefab, bombPlacementPosition, Quaternion.identity);
-        bombsRemaining--; // Decrease available bombs.
-        // Assign a tag to the bomb based on remaining bombs (might be for UI or specific logic).
-        bomb.tag = $"Bomb-{2 - bombsRemaining}";
-        Debug.Log($"Placed bomb, Bombs remaining: {bombsRemaining}");
+        bombsRemaining--; // Decrease the count of bombs available to place.
 
         // Wait for the bomb's fuse time.
         yield return new WaitForSeconds(bombFuseTime);
@@ -118,8 +113,7 @@ public class BombController : MonoBehaviour
 
         // Destroy the bomb GameObject.
         Destroy(bomb);
-        bombsRemaining++; // Increase the bomb count, allowing another bomb to be placed.
-        Debug.Log($"Bomb explosion, Bombs remaining: {bombsRemaining}");
+        bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
     }
 
     // Handles collisions with other 2D colliders (e.g., picking up items, hitting enemies).
