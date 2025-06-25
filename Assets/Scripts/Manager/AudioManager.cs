@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(transform.root.gameObject); 
         }
         else
         {
@@ -45,6 +45,7 @@ public class AudioManager : MonoBehaviour
         }
 
         musicSource.Stop(); // Dừng nhạc nền
+        sfxSource.Stop(); // Dừng âm thanh hiệu ứng
         musicSource.clip = loseClip;
         musicSource.loop = false;
         musicSource.volume = 1f;
@@ -67,6 +68,7 @@ public class AudioManager : MonoBehaviour
         }
 
         musicSource.Stop(); // Dừng nhạc nền
+        sfxSource.Stop(); // Dừng âm thanh hiệu ứng
         musicSource.clip = loseClip;
         musicSource.clip = winClip;
         musicSource.loop = false;

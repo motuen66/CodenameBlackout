@@ -26,7 +26,16 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-    }
+        if (SceneManager.GetActiveScene().buildIndex == 0) // hoặc tên: .name == "MainMenu"
+        {
+            AudioManager.Instance.PlayWelcomeSound();
+        }
+        else
+        {
+            AudioManager.Instance.PlayBackgroundMusic();
+        }
+    
+}
 
     public void UpdateGameState(GameState newState)
     {
