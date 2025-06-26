@@ -10,6 +10,14 @@ public class GameManager : MonoBehaviour
 
     public static event Action<GameState> OnGameStateChanged;
 
+    public int CurrentLevel
+    {
+        get
+        {
+            return SceneManager.GetActiveScene().buildIndex;
+        }
+    }
+
     [SerializeField]
     private GameObject PauseMenu;
     [SerializeField]
@@ -75,6 +83,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log("Total Score: " + score);
         WinMenu.SetActive(true);
         Time.timeScale = 0f;
+        ScoreManager.Instance.ShowTotalScore();
         AudioManager.Instance.PlayWinSound();
     }
 
@@ -114,24 +123,21 @@ public class GameManager : MonoBehaviour
         {
             PauseMenu.SetActive(false);
         }
+        if (WinMenu != null && WinMenu.activeSelf)
+        {
+            WinMenu.SetActive(false);
+            ScoreManager.Instance.ResetScore();
+        }
 
         SceneManager.LoadSceneAsync(level);
         if (Time.timeScale == 0f)
         {
             Time.timeScale = 1f;
         }
-        if (CurrentGameState == GameState.Paused || CurrentGameState == GameState.GameOver || CurrentGameState == GameState.Win)
-        {
-            //ResumeGame();
-            UpdateGameState(GameState.Playing);
-        } else if (CurrentGameState == GameState.Playing)
+        if (CurrentGameState == GameState.Playing)
         {
             PauseGame();
         }
-        //if (level > 0 && MissionBriefMenu != null && !MissionBriefMenu.activeSelf)
-        //{
-        //    MissionBriefMenu.SetActive(true);
-        //}
     }
 
     public void GameOver()
@@ -140,6 +146,10 @@ public class GameManager : MonoBehaviour
             AudioManager.Instance.PlayLoseSound();
 
         Time.timeScale = 0f;
+        if (GameOverMenu == null)
+        {
+            GameOverMenu = GameObject.Find("MissionFailPanel");
+        }
         GameOverMenu.SetActive(true);
     }
 
@@ -149,6 +159,9 @@ public class GameManager : MonoBehaviour
         if (MissionBriefMenu.activeSelf)
         {
             MissionBriefMenu.SetActive(false);
+            UpdateGameState(GameState.Playing);
+            ScoreManager.Instance.StartCountDown();
+            ScoreManager.Instance.ShowHighScore(CurrentLevel);
         }
     }
 }
