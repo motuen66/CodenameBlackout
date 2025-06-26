@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ExplosionPart : MonoBehaviour
@@ -95,7 +96,15 @@ public class ExplosionPart : MonoBehaviour
             }
             else if (other.CompareTag("Enemy"))
             {
-                Debug.Log("Enemy destroyed by explosion!");
+                string enemyName = other.name.Split(" ")[0];
+                if (enemyName == "Guard1")
+                {
+                    ScoreManager.Instance.KillYelloGuard();
+                }
+                else if (enemyName == "Guard2")
+                {
+                    ScoreManager.Instance.KillRedGuard();
+                }
                 Destroy(other.gameObject);
             }
             else if (other.CompareTag("Target"))
