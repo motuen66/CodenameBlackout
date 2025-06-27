@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
     private GameObject WinMenu;
     [SerializeField]
     private GameObject MissionBriefMenu;
+    [SerializeField]
+    private Animator transitionAnim;
 
     private void Start()
     {
@@ -123,22 +127,28 @@ public class GameManager : MonoBehaviour
         {
             PauseMenu.SetActive(false);
         }
+
         if (WinMenu != null && WinMenu.activeSelf)
         {
             WinMenu.SetActive(false);
             ScoreManager.Instance.ResetScore();
         }
 
-        SceneManager.LoadSceneAsync(level);
         if (Time.timeScale == 0f)
         {
             Time.timeScale = 1f;
         }
+
         if (CurrentGameState == GameState.Playing)
         {
             PauseGame();
         }
+
+        // ✅ CHỈ gọi coroutine này thôi
+        StartCoroutine(LoadSceneWithTransition(level));
     }
+
+
 
     public void GameOver()
     {
@@ -164,6 +174,26 @@ public class GameManager : MonoBehaviour
             ScoreManager.Instance.ShowHighScore(CurrentLevel);
         }
     }
+    private IEnumerator LoadSceneWithTransition(int level)
+    {
+        if (transitionAnim != null)
+        {
+            transitionAnim.SetTrigger("End");
+            yield return new WaitForSeconds(1f);  // ⏳ Đợi animation chạy xong
+        }
+
+        // ✅ Load scene sau khi đợi
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(level);
+        yield return asyncLoad;  // 🔄 Đợi scene load xong
+
+        // ✅ Sau khi scene load xong → chạy hiệu ứng mở sáng (fade in)
+        if (transitionAnim != null)
+        {
+            transitionAnim.SetTrigger("Start");
+        }
+    }
+
+
 }
 
 public enum GameState
