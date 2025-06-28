@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts;
+using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -114,6 +116,12 @@ public class BombController : MonoBehaviour
         // Destroy the bomb GameObject.
         Destroy(bomb);
         bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
+        StartCoroutine(CoroutineRefreshGrid());
+    }
+
+    private IEnumerator CoroutineRefreshGrid()
+    {
+        yield return new WaitForSeconds(1.2f);
         PathfindingGridManager.Instance.RefreshGridData();
     }
 
@@ -154,26 +162,33 @@ public class BombController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ExplosionPart explosionPart = ExplosionPart.Instance;
-        ItemController itemController = ItemController.Instance;
-        string touchObjectName = collision.gameObject.name.Split("(Clone)")[0];
-        if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
+        try
         {
-            itemController.StartBombPlusTemporary();
-            Destroy(collision.gameObject);
-            AudioManager.Instance.PlayPickItemSound();
-        }
-        else if (touchObjectName == explosionPart.ItemExtraRangePrefap.name)
+            ExplosionPart explosionPart = ExplosionPart.Instance;
+            ItemController itemController = ItemController.Instance;
+            string touchObjectName = collision.gameObject.name.Split("(Clone)")[0];
+            if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
+            {
+                itemController.StartBombPlusTemporary();
+                Destroy(collision.gameObject);
+                AudioManager.Instance.PlayPickItemSound();
+            }
+            else if (touchObjectName == explosionPart.ItemExtraRangePrefap.name)
+            {
+                itemController.StartBombExtraRangeTemporary();
+                Destroy(collision.gameObject);
+                AudioManager.Instance.PlayPickItemSound();
+            }
+            else if (touchObjectName == explosionPart.ItemSpiritPrefab.name)
+            {
+                itemController.StartSpeedUpTemporary();
+                Destroy(collision.gameObject);
+                AudioManager.Instance.PlayPickItemSound();
+            }
+        } 
+        catch (Exception ex)
         {
-            itemController.StartBombExtraRangeTemporary();
-            Destroy(collision.gameObject);
-            AudioManager.Instance.PlayPickItemSound();
-        }
-        else if (touchObjectName == explosionPart.ItemSpiritPrefab.name)
-        {
-            itemController.StartSpeedUpTemporary();
-            Destroy(collision.gameObject);
-            AudioManager.Instance.PlayPickItemSound();
+            //Debug.LogError("Error in OnTriggerEnter2D: " + ex.Message);
         }
     }
 }

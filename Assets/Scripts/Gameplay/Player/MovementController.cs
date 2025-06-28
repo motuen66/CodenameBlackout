@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -63,29 +64,36 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        // Read input from Input System
-        Vector2 input = moveAction.ReadValue<Vector2>() * Time.deltaTime;
+        try
+        {
+            // Read input from Input System
+            Vector2 input = moveAction.ReadValue<Vector2>() * Time.deltaTime;
 
-        // Determine direction and animation
-        if (input.y > 0)
-        {
-            SetDirection(Vector2.up, spriteRendererUp);
+            // Determine direction and animation
+            if (input.y > 0)
+            {
+                SetDirection(Vector2.up, spriteRendererUp);
+            }
+            else if (input.y < 0)
+            {
+                SetDirection(Vector2.down, spriteRendererDown);
+            }
+            else if (input.x < 0)
+            {
+                SetDirection(Vector2.left, spriteRendererLeft);
+            }
+            else if (input.x > 0)
+            {
+                SetDirection(Vector2.right, spriteRendererRight);
+            }
+            else
+            {
+                SetDirection(Vector2.zero, activeSpriteRenderer);
+            }
         }
-        else if (input.y < 0)
+        catch (Exception ex)
         {
-            SetDirection(Vector2.down, spriteRendererDown);
-        }
-        else if (input.x < 0)
-        {
-            SetDirection(Vector2.left, spriteRendererLeft);
-        }
-        else if (input.x > 0)
-        {
-            SetDirection(Vector2.right, spriteRendererRight);
-        }
-        else
-        {
-            SetDirection(Vector2.zero, activeSpriteRenderer);
+            //Debug.LogError("Error in Update: " + ex.Message);
         }
     }
 
