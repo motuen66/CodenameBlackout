@@ -9,9 +9,12 @@ public class MovementController : MonoBehaviour
     public static MovementController Instance { get; private set; }
     private Rigidbody2D rb;
     private Vector2 direction = Vector2.down;
-    public float speed = 5f;
-    public float maxSpeed = 7f;
-    public float minSpeed = 5f;
+    [SerializeField] 
+    public float speed = 3f;
+    [SerializeField] 
+    public float maxSpeed = 5f;
+    [SerializeField] 
+    public float minSpeed = 3f;
 
     [Header("Sprites")]
     public AnimatedSpriteRenderer spriteRendererUp;
