@@ -19,7 +19,7 @@ public class BombController : MonoBehaviour
     public int bombAmount = 1;
     public int bombsRemaining;
 
-    private float bombExplosionTime = 1.2f;
+    private float bombExplosionTime = 2f;
 
     public Vector2 bombPlacedPosition { get; private set; }
 
