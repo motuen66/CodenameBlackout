@@ -44,6 +44,9 @@ public class GuardPathChasingPlayer : MonoBehaviour
 
     public UnityEngine.Rendering.Universal.Light2D guardLight; // Updated guardLight reference
 
+    [SerializeField]
+    private GameObject exclamationPoint;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -145,6 +148,7 @@ public class GuardPathChasingPlayer : MonoBehaviour
         lastKnownPlayerPosition = playerPosition;
         StopAllCoroutines();
         AttemptToFindPath(playerPosition);
+        exclamationPoint.SetActive(true);
     }
 
     void LosePlayer()
@@ -212,6 +216,10 @@ public class GuardPathChasingPlayer : MonoBehaviour
                 }
             }
         }
+        //if (playerDetected)
+        //{
+        //    exclamationPoint.SetActive(true);
+        //}
 
         // Nếu đang chase mà không còn thấy player nữa, thì mất dấu
         if (isChasing && !playerDetected && !lostPlayer)
@@ -314,6 +322,7 @@ public class GuardPathChasingPlayer : MonoBehaviour
         yield return new WaitForSeconds(lostPlayerWaitTime);
         isWaiting = false;
         recentlyLostPlayer = true;
+        exclamationPoint.SetActive(false);
         StartPatrol();
         StartCoroutine(LostPlayerCooldownCoroutine());
     }

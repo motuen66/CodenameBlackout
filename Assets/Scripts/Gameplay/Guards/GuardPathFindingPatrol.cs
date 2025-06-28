@@ -53,6 +53,8 @@ public class GuardPathfindingPatrol : MonoBehaviour
     [SerializeField] private float alertSpeed = 3f;
     [SerializeField] private float speedBoostDuration = 5f;
 
+    [SerializeField] private GameObject exclamationPoint;
+
     private float currentSpeed;
     private Coroutine speedBoostCoroutine;
 
@@ -395,8 +397,12 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
                     if (losClear)
                     {
+                        exclamationPoint.SetActive(true);
                         TriggerSpeedBoost();
                         return;
+                    } else
+                    {
+                        exclamationPoint.SetActive(false);
                     }
                 }
             }
