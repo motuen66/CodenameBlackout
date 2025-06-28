@@ -6,10 +6,15 @@ MonoImporter:
   defaultReferences:
   - footstepSource: {instanceID: 0}
   - sfxSource: {instanceID: 0}
+  - musicSource: {instanceID: 0}
   - explosionClip: {instanceID: 0}
   - fuseBombClip: {instanceID: 0}
   - pickItemClip: {instanceID: 0}
   - footstepClip: {fileID: 8300000, guid: e14bae7dd45f23c4e9fbf0818f3c600f, type: 3}
+  - welcomeClip: {instanceID: 0}
+  - backgroundClip: {fileID: 8300000, guid: 739e9ecc379fc8c4bb8a2b3a1846330b, type: 3}
+  - loseClip: {instanceID: 0}
+  - winClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
