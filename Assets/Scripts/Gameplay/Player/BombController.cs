@@ -27,6 +27,20 @@ public class BombController : MonoBehaviour
     // Current count of bombs the player can still place.
     public int bombsRemaining;
 
+    private float bombExplosionTime = 1.2f;
+
+    public Vector2 bombPlacedPosition { get; private set; }
+
+    public bool isBombInExplosion = false;
+
+
+    private void Update()
+    {
+        if (isBombInExplosion)
+        {
+            DrawDebugCircle(bombPlacedPosition, 10f, Color.red);
+        }
+    }
     // Sets up the singleton instance.
     private void Start()
     {
@@ -101,6 +115,7 @@ public class BombController : MonoBehaviour
 
         // Instantiate a bomb prefab at the calculated position.
         GameObject bomb = Instantiate(bombPrefab, bombPlacementPosition, Quaternion.identity);
+        bombPlacedPosition = bomb.transform.position;
         bombsRemaining--; // Decrease the count of bombs available to place.
 
         // Wait for the bomb's fuse time.
@@ -111,6 +126,7 @@ public class BombController : MonoBehaviour
         if (currentExplosionPrefab != null)
         {
             Instantiate(currentExplosionPrefab, bomb.transform.position, Quaternion.identity);
+            StartCoroutine(setIsBombInExplosion());
         }
 
         // Destroy the bomb GameObject.
@@ -119,9 +135,30 @@ public class BombController : MonoBehaviour
         StartCoroutine(CoroutineRefreshGrid());
     }
 
+    public void DrawDebugCircle(Vector2 center, float radius, Color color, int segments = 36)
+    {
+        float angleStep = 360f / segments;
+
+        Vector3 prevPoint = center + Vector2.right * radius;
+        for (int i = 1; i <= segments; i++)
+        {
+            float angle = i * angleStep * Mathf.Deg2Rad;
+            Vector3 nextPoint = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+            Debug.DrawLine(prevPoint, nextPoint, color, 0f, false);
+            prevPoint = nextPoint;
+        }
+    }
+
+    private IEnumerator setIsBombInExplosion()
+    {
+        isBombInExplosion = true;
+        yield return new WaitForSeconds(bombExplosionTime);
+        isBombInExplosion = false;
+    }
+
     private IEnumerator CoroutineRefreshGrid()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(bombExplosionTime);
         PathfindingGridManager.Instance.RefreshGridData();
     }
 

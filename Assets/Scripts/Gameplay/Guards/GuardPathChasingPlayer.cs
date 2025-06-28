@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using KwaaktjePathfinder2D;
+using System;
 
 [RequireComponent(typeof(Collider2D))]
 public class GuardPathChasingPlayer : MonoBehaviour
@@ -44,6 +45,8 @@ public class GuardPathChasingPlayer : MonoBehaviour
 
     public UnityEngine.Rendering.Universal.Light2D guardLight; // Updated guardLight reference
 
+    private float distanceGuardCanHearExplosion = 10f;
+
     [SerializeField]
     private GameObject exclamationPoint;
 
@@ -80,6 +83,11 @@ public class GuardPathChasingPlayer : MonoBehaviour
     {
         // Luôn kiểm tra tầm nhìn player, kể cả khi lostPlayer
         DetectPlayer();
+        
+        if (BombController.Instance.isBombInExplosion)
+        {
+            StartCoroutine(DetectBombExplosion());
+        }
 
         if (isChasing && !lostPlayer)
         {
@@ -95,6 +103,22 @@ public class GuardPathChasingPlayer : MonoBehaviour
         {
             float angle = Mathf.Atan2(lastFacingDirection.y, lastFacingDirection.x) * Mathf.Rad2Deg - 90f;
             guardLight.transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+    }
+
+    // Guard run faster for 3s if hear bomb's explosion
+    private IEnumerator DetectBombExplosion()
+    {
+        Vector2 currentGuardPosition = rb.transform.position;
+        float distanceFromGuardToExplosion = Vector2.Distance(currentGuardPosition, BombController.Instance.bombPlacedPosition);
+        
+        if (distanceFromGuardToExplosion < distanceGuardCanHearExplosion)
+        {
+            moveSpeed = 2.5f;
+            exclamationPoint.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            moveSpeed = 2.0f;
+            exclamationPoint.SetActive(false);
         }
     }
 

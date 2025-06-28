@@ -58,6 +58,7 @@ public class GuardPathfindingPatrol : MonoBehaviour
     private float currentSpeed;
     private Coroutine speedBoostCoroutine;
 
+    private float distanceGuardCanHearExplosion = 10f;
 
     // Initializes component references when the script is loaded.
     void Awake()
@@ -141,6 +142,10 @@ public class GuardPathfindingPatrol : MonoBehaviour
     // Updates animations, facing direction, Light2D direction, and starts player detection each frame.
     void Update()
     {
+        if (BombController.Instance.isBombInExplosion)
+        {
+            StartCoroutine(DetectBombExplosion());
+        }
         Vector2 currentVelocity = rb.linearVelocity;
         if (currentVelocity.magnitude > 0.05f)
         {
@@ -161,6 +166,22 @@ public class GuardPathfindingPatrol : MonoBehaviour
         }
 
         DetectPlayer();
+    }
+
+    // Guard run faster for 3s if hear bomb's explosion
+    private IEnumerator DetectBombExplosion()
+    {
+        Vector2 currentGuardPosition = rb.transform.position;
+        float distanceFromGuardToExplosion = Vector2.Distance(currentGuardPosition, BombController.Instance.bombPlacedPosition);
+
+        if (distanceFromGuardToExplosion < distanceGuardCanHearExplosion)
+        {
+            moveSpeed = 2.5f;
+            exclamationPoint.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            moveSpeed = 2.0f;
+            exclamationPoint.SetActive(false);
+        }
     }
 
     // Handles guard movement along the path in fixed time steps.
