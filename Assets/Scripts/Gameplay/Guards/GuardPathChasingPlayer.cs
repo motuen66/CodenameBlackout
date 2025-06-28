@@ -50,6 +50,8 @@ public class GuardPathChasingPlayer : MonoBehaviour
     [SerializeField]
     private GameObject exclamationPoint;
 
+    private int guardContactCount = 0;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -274,7 +276,6 @@ public class GuardPathChasingPlayer : MonoBehaviour
             animator.SetBool("IsMoving", true);
             animator.SetFloat("MoveX", currentVelocity.x);
             animator.SetFloat("MoveY", currentVelocity.y);
-            // Do NOT update lastFacingDirection here anymore!
         }
         else
         {
@@ -367,42 +368,17 @@ public class GuardPathChasingPlayer : MonoBehaviour
         isWaiting = false;
         if (isChasing && !lostPlayer)
         {
-            // Đang chase thì tìm lại đường đến player
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
                 AttemptToFindPath(player.transform.position);
         }
         else if (isChasing && lostPlayer)
         {
-            // Đang mất dấu thì tìm lại đường về vị trí cuối cùng thấy player
             AttemptToFindPath(lastKnownPlayerPosition);
         }
         else
         {
-            // Patrol bình thường
             FindAndStartNextReachableWaypointPath(false);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Check if the other object is also a guard (by tag or component)
-        if (collision.gameObject != this.gameObject && collision.gameObject.GetComponent<GuardPathChasingPlayer>() != null)
-        {
-            // Enable trigger to allow passing through
-            if (guardCollider != null)
-                guardCollider.isTrigger = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        // Check if the other object is also a guard
-        if (collision.gameObject != this.gameObject && collision.gameObject.GetComponent<GuardPathChasingPlayer>() != null)
-        {
-            // Disable trigger to restore normal collision
-            if (guardCollider != null)
-                guardCollider.isTrigger = false;
         }
     }
 
@@ -413,11 +389,9 @@ public class GuardPathChasingPlayer : MonoBehaviour
             ? new Vector3(guardCollider.bounds.center.x, guardCollider.bounds.max.y + visionVerticalOffset, transform.position.z)
             : transform.position;
 
-        // Vẽ bán kính phát hiện (DetectionRadius)
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(guardPos, viewDistance);
 
-        // Vẽ hình nón tầm nhìn (màu vàng)
         Gizmos.color = Color.yellow;
         float halfFOV = fieldOfViewAngle / 2f;
         Vector2 forwardDir = lastFacingDirection.sqrMagnitude > 0.01f ? lastFacingDirection : Vector2.down;
@@ -431,7 +405,6 @@ public class GuardPathChasingPlayer : MonoBehaviour
         Gizmos.DrawRay(guardPos, leftRayDirection * viewDistance);
         Gizmos.DrawRay(guardPos, rightRayDirection * viewDistance);
 
-        // Vẽ cung tròn hình nón
         int segments = 20;
         Vector3 previousPoint = guardPos + leftRayDirection * viewDistance;
         for (int i = 1; i <= segments; i++)

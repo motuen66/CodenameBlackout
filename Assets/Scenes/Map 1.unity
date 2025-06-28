@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 55710340}
   - component: {fileID: 55710339}
   - component: {fileID: 55710338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3300,7 +3300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 371642989}
   - component: {fileID: 371642988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3384,7 +3384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 384405781}
   - component: {fileID: 384405780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ExclamationPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8404,7 +8404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 807938008}
   - component: {fileID: 807938009}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ExclamationPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10983,7 +10983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077529326}
   - component: {fileID: 1077529325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ExclamationPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12379,7 +12379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1202598334}
   - component: {fileID: 1202598333}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15855,7 +15855,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1519058797}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FOV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17593,7 +17593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1677768367}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FOV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17724,7 +17724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1701848333}
   - component: {fileID: 1701848334}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18096,6 +18096,7 @@ MonoBehaviour:
   bombFuseTime: 3
   bombAmount: 1
   bombsRemaining: 0
+  isBombInExplosion: 0
 --- !u!4 &1704807578 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
@@ -19046,7 +19047,7 @@ GameObject:
   - component: {fileID: 1811558174}
   - component: {fileID: 1811558173}
   - component: {fileID: 1811558172}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard1 (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -19281,7 +19282,7 @@ GameObject:
   - component: {fileID: 1815141183}
   - component: {fileID: 1815141182}
   - component: {fileID: 1815141181}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard1 (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -24223,7 +24224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1953937668}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FOV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24656,7 +24657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1985635892}
   - component: {fileID: 1985635893}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24805,7 +24806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1991765375}
   - component: {fileID: 1991765374}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26744,7 +26745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2133845783}
   - component: {fileID: 2133845784}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
