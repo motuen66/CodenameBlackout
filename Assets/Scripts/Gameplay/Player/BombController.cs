@@ -114,6 +114,7 @@ public class BombController : MonoBehaviour
         // Destroy the bomb GameObject.
         Destroy(bomb);
         bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
+        PathfindingGridManager.Instance.RefreshGridData();
     }
 
     // Handles collisions with other 2D colliders (e.g., picking up items, hitting enemies).
@@ -126,6 +127,36 @@ public class BombController : MonoBehaviour
         string touchObjectName = collision.gameObject.name.Split("(Clone)")[0];
 
         // Check for specific item pickups and activate their effects.
+        //if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
+        //{
+        //    itemController.StartBombPlusTemporary();
+        //    Destroy(collision.gameObject);
+        //    AudioManager.Instance.PlayPickItemSound();
+        //}
+        //else if (touchObjectName == explosionPart.ItemExtraRangePrefap.name)
+        //{
+        //    itemController.StartBombExtraRangeTemporary();
+        //    Destroy(collision.gameObject);
+        //    AudioManager.Instance.PlayPickItemSound();
+        //}
+        //else if (touchObjectName == explosionPart.ItemSpiritPrefab.name)
+        //{
+        //    itemController.StartSpeedUpTemporary();
+        //    Destroy(collision.gameObject);
+        //    AudioManager.Instance.PlayPickItemSound();
+        //}
+        // Check if the player collides with an enemy, triggering game over.
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            GameManager.Instance.UpdateGameState(GameState.GameOver);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ExplosionPart explosionPart = ExplosionPart.Instance;
+        ItemController itemController = ItemController.Instance;
+        string touchObjectName = collision.gameObject.name.Split("(Clone)")[0];
         if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
         {
             itemController.StartBombPlusTemporary();
@@ -143,11 +174,6 @@ public class BombController : MonoBehaviour
             itemController.StartSpeedUpTemporary();
             Destroy(collision.gameObject);
             AudioManager.Instance.PlayPickItemSound();
-        }
-        // Check if the player collides with an enemy, triggering game over.
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            GameManager.Instance.UpdateGameState(GameState.GameOver);
         }
     }
 }

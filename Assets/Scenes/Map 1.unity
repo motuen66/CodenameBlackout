@@ -245,11 +245,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
---- !u!4 &14799943 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-  m_PrefabInstance: {fileID: 1757198335}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &18178846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403,7 +398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &55710338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,8 +1120,8 @@ RectTransform:
   - {fileID: 649653439}
   - {fileID: 1178939076}
   - {fileID: 852023125}
+  - {fileID: 1533485014}
   - {fileID: 1465296930}
-  - {fileID: 2003558964}
   - {fileID: 1229037552}
   - {fileID: 1865764199}
   - {fileID: 638099960}
@@ -2573,19 +2568,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Tonight, you're going in.\nThe target: a heavily stocked enemy ammo depot
-    near Tan Son Nhat.\nThis is the beating heart of their weapon supply chain -
-    take it out, and the frontline will choke.\n\nThe area is patrolled by unarmed
-    guards in yellow uniforms. They\u2019re not trained soldiers - just low-level
-    security. But they\u2019re fast. If they spot you, they\u2019ll panic and run
-    quickly, making it harder for you to move undetected. If one of them touches
-    you, the mission fails immediately.\n\nJust one simple rule: don\u2019t get caught.\n\nYou\u2019ll
+    near Tan Son Nhat.\nThis is the beating heart of their weapon supply chain - take
+    it out, and the frontline will choke.\n\nThe area is patrolled by unarmed guards
+    in yellow uniforms. They\u2019re not trained soldiers - just low-level security.
+    But they\u2019re fast. If they spot you, they\u2019ll panic and run quickly, making
+    it harder for you to move undetected. If one of them touches you, the mission
+    fails immediately.\n\nJust one simple rule: don\u2019t get caught.\n\nYou\u2019ll
     need to sneak past them, memorize their patrol paths, and plant explosives at
     key ammo storage points.\n\nOn your way, you may find temporary power-up items:\nA
     speed boost to move faster,\nA multi-bomb upgrade to place several charges at
-    once,\nAnd a power enhancer to increase bomb blast range.\nUse them wisely -
-    they expire after a short time.\n\nYour score will be based on:\nHow quickly
-    you complete the mission\nHow many guards you eliminate using bombs\n\nNo need
-    for violence - unless it's efficient.\nMove fast. Stay hidden. Hit hard."
+    once,\nAnd a power enhancer to increase bomb blast range.\nUse them wisely - they
+    expire after a short time.\n\nYour score will be based on:\nHow quickly you complete
+    the mission\nHow many guards you eliminate using bombs\n\nNo need for violence
+    - unless it's efficient.\nMove fast. Stay hidden. Hit hard."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f4cbd7b04af9f447b62208ed5426c9b, type: 2}
   m_sharedMaterial: {fileID: 7645241978961027575, guid: 1f4cbd7b04af9f447b62208ed5426c9b, type: 2}
@@ -6834,7 +6829,6 @@ Transform:
   - {fileID: 162469011}
   - {fileID: 1614195726}
   - {fileID: 202362441}
-  - {fileID: 14799943}
   - {fileID: 1477852366}
   - {fileID: 2111977187}
   - {fileID: 623196411}
@@ -6998,11 +6992,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 816363054912970203, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Size.x
-      value: 2.9756308
+      value: 2.8933034
+      objectReference: {fileID: 0}
+    - target: {fileID: 816363054912970203, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9362595
       objectReference: {fileID: 0}
     - target: {fileID: 816363054912970203, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Offset.x
-      value: 0.0017647743
+      value: -0.016259432
+      objectReference: {fileID: 0}
+    - target: {fileID: 816363054912970203, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5145041
       objectReference: {fileID: 0}
     - target: {fileID: 816363054912970203, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_IsTrigger
@@ -7010,27 +7012,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 816363054912970203, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.65
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 816363054912970203, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.048780486
+      value: 0.03021148
       objectReference: {fileID: 0}
     - target: {fileID: 816363054912970203, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 4.1666665
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 816363054912970203, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.7083334
+      value: 3.31
       objectReference: {fileID: 0}
     - target: {fileID: 2586320996992611965, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.4962997
+      value: 2.51
       objectReference: {fileID: 0}
     - target: {fileID: 2586320996992611965, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11
+      value: -11.036667
       objectReference: {fileID: 0}
     - target: {fileID: 2586320996992611965, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7075,7 +7077,7 @@ PrefabInstance:
     - target: {fileID: 7992342801842622112, guid: c9f1c17d211a47d4187b830908121dbd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7980773680309761575, guid: f5364d169d78c614e902bf6405e6687e, type: 3}
+      objectReference: {fileID: -8643170144668154990, guid: f7988b6f328c50c47ba1250609b90492, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15840,6 +15842,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7265340415932269648, guid: 02f274bc5a6a4d444b8b45da7a6e4b00, type: 3}
   m_PrefabInstance: {fileID: 2044554273}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1533485013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1533485014}
+  - component: {fileID: 1533485015}
+  m_Layer: 5
+  m_Name: SliderBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1533485014
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533485013}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3999143, y: 2.3999143, z: 2.3999143}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 121423513}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000018119812, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1533485015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533485013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8340de810e04e4abbb96bc73fd7b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderWrapper: {fileID: 1533485014}
+  bombPlusSlider: {fileID: 340474564044128710, guid: 6b664cc636a68184397fb9ca62ba5c95, type: 3}
+  bombExtraRangeSlider: {fileID: 8775200511849744866, guid: b465bb9125d54d041b6106b1ccac8ae9, type: 3}
+  speedUpSlider: {fileID: 7721769903536432190, guid: 3a1048da49942cd4eafe50a5ece9835a, type: 3}
 --- !u!4 &1535157834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6517812062890236021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
@@ -17635,51 +17689,51 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 2aeac7c3-8c46-4363-b85c-43c3d0def116
-    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 5e3c8a89-2de5-49c0-96f3-057962a39148
-    m_ActionName: 'Player/Look[/Mouse/delta]'
+    m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 1a5ad0c7-b7db-4e06-b6e7-9a8b10f81715
-    m_ActionName: 'Player/Fire[/Mouse/leftButton]'
+    m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: bb178d83-dc1e-47cd-8815-8082cf8479e1
-    m_ActionName: 'Player/PlaceBomb[/Keyboard/space]'
+    m_ActionName: Player/PlaceBomb[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 421a73ad-ea11-4cdc-ac27-9813d4fdab81
-    m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 891f04a7-261a-4eb7-b23f-e375318f8cd5
-    m_ActionName: 'UI/Submit[/Keyboard/enter]'
+    m_ActionName: UI/Submit[/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: d45133ce-5057-42aa-b763-74f990331244
-    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
+    m_ActionName: UI/Cancel[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: ce240a7d-3e12-49c7-858f-8929e6e87993
-    m_ActionName: 'UI/Point[/Mouse/position]'
+    m_ActionName: UI/Point[/Mouse/position]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: e405348d-cc08-4bda-b3f9-6523fad49538
-    m_ActionName: 'UI/Click[/Mouse/leftButton]'
+    m_ActionName: UI/Click[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 0b09467b-25f8-49af-b236-a9aa206b6c3b
-    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: cdc3dcd7-1202-44ea-a8fd-c648745da7ad
-    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 26953bd2-f0d5-4743-bdd2-46414081f3b2
-    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 36726e36-6701-4b94-8a54-011017057d39
@@ -18491,71 +18545,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2508731078963290234, guid: 676b95185af11124e9846bc6b77e243f, type: 3}
   m_PrefabInstance: {fileID: 1756321891}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1757198335
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 707834424}
-    m_Modifications:
-    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_Name
-      value: Destructible 3 (22)
-      objectReference: {fileID: 0}
-    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 532810635547906177, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_TagString
-      value: Destructible
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12.437
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -14.280001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928306968159986857, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1a9212469bc37f44ea58660f2fb795f9, type: 3}
 --- !u!4 &1758270745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6517812062890236021, guid: f408091fa4c24b647bce0ca6607a7b4b, type: 3}
@@ -18800,7 +18789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1811558172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19033,7 +19022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1815141181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24656,58 +24645,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 489c76496db7a9140bc5989097d9db64, type: 3}
---- !u!1 &2003558963
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2003558964}
-  - component: {fileID: 2003558965}
-  m_Layer: 5
-  m_Name: SliderBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2003558964
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003558963}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 121423513}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2003558965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003558963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8340de810e04e4abbb96bc73fd7b7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderWrapper: {fileID: 2003558964}
-  bombPlusSlider: {fileID: 340474564044128710, guid: 6b664cc636a68184397fb9ca62ba5c95, type: 3}
-  bombExtraRangeSlider: {fileID: 8775200511849744866, guid: b465bb9125d54d041b6106b1ccac8ae9, type: 3}
-  speedUpSlider: {fileID: 7721769903536432190, guid: 3a1048da49942cd4eafe50a5ece9835a, type: 3}
 --- !u!1001 &2005344057
 PrefabInstance:
   m_ObjectHideFlags: 0
