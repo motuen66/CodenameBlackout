@@ -9,22 +9,14 @@ public class BombController : MonoBehaviour
 {
     public static BombController Instance { get; private set; }
 
-    // Reference to your Input Actions Asset.
     public PlayerInputActions inputActions;
 
-    // Prefab for default explosion.
     public GameObject explosionDefaultPrefab;
-    // Prefab for explosion with extra range.
     public GameObject explosionExtraRangePrefab;
-    // Currently active explosion prefab.
     public GameObject currentExplosionPrefab;
-    // Prefab of the bomb object to place.
     public GameObject bombPrefab;
-    // Time until the bomb explodes.
     public float bombFuseTime = 3f;
-    // Maximum number of bombs the player can place simultaneously.
     public int bombAmount = 1;
-    // Current count of bombs the player can still place.
     public int bombsRemaining;
 
     private float bombExplosionTime = 1.2f;

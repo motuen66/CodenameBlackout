@@ -6,8 +6,6 @@ using UnityEngine;
 public class ExplosionPart : MonoBehaviour
 {
     public static ExplosionPart Instance { get; private set; }
-    private SpriteRenderer spriteRenderer;
-    private Animator animator;
 
     [Header("Items")]
     public GameObject ItemExtraBombPrefap;
@@ -24,18 +22,8 @@ public class ExplosionPart : MonoBehaviour
         {
             Instance = this;
         }
-        else if (Instance != this)
-        {
-            // Do nothing or destroy if you want strict singleton
-        }
     }
 
-    void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-    }
-        
     void OnEnable()
     {
         overlapCoroutine = StartCoroutine(RepeatCheckOverlap());
@@ -92,13 +80,11 @@ public class ExplosionPart : MonoBehaviour
                 {
                     Vector2 destroyPosition = other.transform.position;
                     destructibleBlock.DestroyBlock();
-                    Debug.Log(this.name + " phá hủy  " + other.name);
                     SpawnItemsRandom(destroyPosition);
                 }
             }
             else if (other.CompareTag("Player"))
             {
-                Debug.Log("da chet");
                 GameManager.Instance.UpdateGameState(GameState.GameOver);
             }
             else if (other.CompareTag("Enemy"))

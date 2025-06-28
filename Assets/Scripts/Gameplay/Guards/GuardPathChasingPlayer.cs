@@ -43,7 +43,7 @@ public class GuardPathChasingPlayer : MonoBehaviour
     private Vector2 lastFacingDirection = Vector2.down;
     private Vector3 lastKnownPlayerPosition;
 
-    public UnityEngine.Rendering.Universal.Light2D guardLight; // Updated guardLight reference
+    public UnityEngine.Rendering.Universal.Light2D guardLight;
 
     private float distanceGuardCanHearExplosion = 10f;
 
@@ -81,7 +81,6 @@ public class GuardPathChasingPlayer : MonoBehaviour
 
     void Update()
     {
-        // Luôn kiểm tra tầm nhìn player, kể cả khi lostPlayer
         DetectPlayer();
         
         if (BombController.Instance.isBombInExplosion)
@@ -202,7 +201,7 @@ public class GuardPathChasingPlayer : MonoBehaviour
 
             if (Mathf.Abs(angleToPlayer) <= fieldOfViewAngle / 2f)
             {
-                // Vẽ các tia kiểm tra tầm nhìn (multi-ray)
+                // Draw multi-ray detection lines
                 float angleStep = numberOfRays > 1 ? multiRayAngularSpread / (numberOfRays - 1) : 0f;
                 float startAngle = -multiRayAngularSpread / 2f;
                 for (int i = 0; i < numberOfRays; i++)
@@ -227,7 +226,7 @@ public class GuardPathChasingPlayer : MonoBehaviour
                 if (CheckLineOfSight(visionOrigin, playerPos))
                 {
                     playerDetected = true;
-                    // Nếu đang lostPlayer hoặc patrol, chuyển sang chase ngay lập tức
+                    // Start chase if not already chasing or lost player
                     if (!isChasing || lostPlayer)
                     {
                         StartChase(playerPos);
@@ -240,12 +239,7 @@ public class GuardPathChasingPlayer : MonoBehaviour
                 }
             }
         }
-        //if (playerDetected)
-        //{
-        //    exclamationPoint.SetActive(true);
-        //}
 
-        // Nếu đang chase mà không còn thấy player nữa, thì mất dấu
         if (isChasing && !playerDetected && !lostPlayer)
         {
             LosePlayer();

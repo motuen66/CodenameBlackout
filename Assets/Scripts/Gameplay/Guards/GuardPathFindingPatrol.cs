@@ -489,13 +489,6 @@ public class GuardPathfindingPatrol : MonoBehaviour
         return anyRayHitsPlayer;
     }
 
-
-    // Handles 2D physics collisions (currently not used for core logic).
-    void OnCollisionEnter2D(Collision2D collision) { /* Debug.Log($"Collided with {collision.gameObject.name}"); */ }
-
-    // Handles 2D trigger collisions (currently not used for core logic).
-    void OnTriggerEnter2D(Collider2D other) { /* Debug.Log($"Triggered by {other.gameObject.name}"); */ }
-
     // Draws visual debugging aids in the Scene view, such as patrol paths, detection radius, and view cone.
     void OnDrawGizmosSelected()
     {
