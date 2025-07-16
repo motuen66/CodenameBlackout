@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts;
+using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,24 +9,30 @@ public class BombController : MonoBehaviour
 {
     public static BombController Instance { get; private set; }
 
-    // Reference to your Input Actions Asset.
     public PlayerInputActions inputActions;
 
-    // Prefab for default explosion.
     public GameObject explosionDefaultPrefab;
-    // Prefab for explosion with extra range.
     public GameObject explosionExtraRangePrefab;
-    // Currently active explosion prefab.
     public GameObject currentExplosionPrefab;
-    // Prefab of the bomb object to place.
     public GameObject bombPrefab;
-    // Time until the bomb explodes.
     public float bombFuseTime = 3f;
-    // Maximum number of bombs the player can place simultaneously.
     public int bombAmount = 1;
-    // Current count of bombs the player can still place.
     public int bombsRemaining;
 
+    private float bombExplosionTime = 2f;
+
+    public Vector2 bombPlacedPosition { get; private set; }
+
+    public bool isBombInExplosion = false;
+
+
+    private void Update()
+    {
+        if (isBombInExplosion)
+        {
+            DrawDebugCircle(bombPlacedPosition, 10f, Color.red);
+        }
+    }
     // Sets up the singleton instance.
     private void Start()
     {
@@ -99,6 +107,7 @@ public class BombController : MonoBehaviour
 
         // Instantiate a bomb prefab at the calculated position.
         GameObject bomb = Instantiate(bombPrefab, bombPlacementPosition, Quaternion.identity);
+        bombPlacedPosition = bomb.transform.position;
         bombsRemaining--; // Decrease the count of bombs available to place.
 
         // Wait for the bomb's fuse time.
@@ -109,11 +118,40 @@ public class BombController : MonoBehaviour
         if (currentExplosionPrefab != null)
         {
             Instantiate(currentExplosionPrefab, bomb.transform.position, Quaternion.identity);
+            StartCoroutine(setIsBombInExplosion());
         }
 
         // Destroy the bomb GameObject.
         Destroy(bomb);
         bombsRemaining++; // Increase the bomb count, allowing the player to place another bomb.
+        StartCoroutine(CoroutineRefreshGrid());
+    }
+
+    public void DrawDebugCircle(Vector2 center, float radius, Color color, int segments = 36)
+    {
+        float angleStep = 360f / segments;
+
+        Vector3 prevPoint = center + Vector2.right * radius;
+        for (int i = 1; i <= segments; i++)
+        {
+            float angle = i * angleStep * Mathf.Deg2Rad;
+            Vector3 nextPoint = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+            Debug.DrawLine(prevPoint, nextPoint, color, 0f, false);
+            prevPoint = nextPoint;
+        }
+    }
+
+    private IEnumerator setIsBombInExplosion()
+    {
+        isBombInExplosion = true;
+        yield return new WaitForSeconds(bombExplosionTime);
+        isBombInExplosion = false;
+    }
+
+    private IEnumerator CoroutineRefreshGrid()
+    {
+        yield return new WaitForSeconds(bombExplosionTime);
+        PathfindingGridManager.Instance.RefreshGridData();
     }
 
     // Handles collisions with other 2D colliders (e.g., picking up items, hitting enemies).
@@ -126,28 +164,60 @@ public class BombController : MonoBehaviour
         string touchObjectName = collision.gameObject.name.Split("(Clone)")[0];
 
         // Check for specific item pickups and activate their effects.
-        if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
-        {
-            itemController.StartBombPlusTemporary();
-            Destroy(collision.gameObject);
-            AudioManager.Instance.PlayPickItemSound();
-        }
-        else if (touchObjectName == explosionPart.ItemExtraRangePrefap.name)
-        {
-            itemController.StartBombExtraRangeTemporary();
-            Destroy(collision.gameObject);
-            AudioManager.Instance.PlayPickItemSound();
-        }
-        else if (touchObjectName == explosionPart.ItemSpiritPrefab.name)
-        {
-            itemController.StartSpeedUpTemporary();
-            Destroy(collision.gameObject);
-            AudioManager.Instance.PlayPickItemSound();
-        }
+        //if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
+        //{
+        //    itemController.StartBombPlusTemporary();
+        //    Destroy(collision.gameObject);
+        //    AudioManager.Instance.PlayPickItemSound();
+        //}
+        //else if (touchObjectName == explosionPart.ItemExtraRangePrefap.name)
+        //{
+        //    itemController.StartBombExtraRangeTemporary();
+        //    Destroy(collision.gameObject);
+        //    AudioManager.Instance.PlayPickItemSound();
+        //}
+        //else if (touchObjectName == explosionPart.ItemSpiritPrefab.name)
+        //{
+        //    itemController.StartSpeedUpTemporary();
+        //    Destroy(collision.gameObject);
+        //    AudioManager.Instance.PlayPickItemSound();
+        //}
         // Check if the player collides with an enemy, triggering game over.
         if (collision.gameObject.CompareTag("Enemy"))
         {
             GameManager.Instance.UpdateGameState(GameState.GameOver);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        try
+        {
+            ExplosionPart explosionPart = ExplosionPart.Instance;
+            ItemController itemController = ItemController.Instance;
+            string touchObjectName = collision.gameObject.name.Split("(Clone)")[0];
+            if (touchObjectName == explosionPart.ItemExtraBombPrefap.name)
+            {
+                itemController.StartBombPlusTemporary();
+                Destroy(collision.gameObject);
+                AudioManager.Instance.PlayPickItemSound();
+            }
+            else if (touchObjectName == explosionPart.ItemExtraRangePrefap.name)
+            {
+                itemController.StartBombExtraRangeTemporary();
+                Destroy(collision.gameObject);
+                AudioManager.Instance.PlayPickItemSound();
+            }
+            else if (touchObjectName == explosionPart.ItemSpiritPrefab.name)
+            {
+                itemController.StartSpeedUpTemporary();
+                Destroy(collision.gameObject);
+                AudioManager.Instance.PlayPickItemSound();
+            }
+        } 
+        catch (Exception ex)
+        {
+            //Debug.LogError("Error in OnTriggerEnter2D: " + ex.Message);
         }
     }
 }

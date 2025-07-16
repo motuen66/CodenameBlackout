@@ -2,7 +2,7 @@
 
 public class Explosion : MonoBehaviour
 {
-    public float duration = 1f; // Thời gian tồn tại của vụ nổ
+    public float duration = 1f;
 
     void Start()
     {
@@ -10,6 +10,4 @@ public class Explosion : MonoBehaviour
 
         Destroy(gameObject, duration);
     }
-
-   
 }

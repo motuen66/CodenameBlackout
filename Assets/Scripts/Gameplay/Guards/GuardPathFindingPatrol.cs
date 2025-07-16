@@ -53,9 +53,12 @@ public class GuardPathfindingPatrol : MonoBehaviour
     [SerializeField] private float alertSpeed = 3f;
     [SerializeField] private float speedBoostDuration = 5f;
 
+    [SerializeField] private GameObject exclamationPoint;
+
     private float currentSpeed;
     private Coroutine speedBoostCoroutine;
 
+    private float distanceGuardCanHearExplosion = 10f;
 
     // Initializes component references when the script is loaded.
     void Awake()
@@ -139,6 +142,10 @@ public class GuardPathfindingPatrol : MonoBehaviour
     // Updates animations, facing direction, Light2D direction, and starts player detection each frame.
     void Update()
     {
+        if (BombController.Instance.isBombInExplosion)
+        {
+            StartCoroutine(DetectBombExplosion());
+        }
         Vector2 currentVelocity = rb.linearVelocity;
         if (currentVelocity.magnitude > 0.05f)
         {
@@ -159,6 +166,22 @@ public class GuardPathfindingPatrol : MonoBehaviour
         }
 
         DetectPlayer();
+    }
+
+    // Guard run faster for 3s if hear bomb's explosion
+    private IEnumerator DetectBombExplosion()
+    {
+        Vector2 currentGuardPosition = rb.transform.position;
+        float distanceFromGuardToExplosion = Vector2.Distance(currentGuardPosition, BombController.Instance.bombPlacedPosition);
+
+        if (distanceFromGuardToExplosion < distanceGuardCanHearExplosion)
+        {
+            moveSpeed = 2.5f;
+            exclamationPoint.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            moveSpeed = 2.0f;
+            exclamationPoint.SetActive(false);
+        }
     }
 
     // Handles guard movement along the path in fixed time steps.
@@ -395,8 +418,12 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
                     if (losClear)
                     {
+                        exclamationPoint.SetActive(true);
                         TriggerSpeedBoost();
                         return;
+                    } else
+                    {
+                        exclamationPoint.SetActive(false);
                     }
                 }
             }
@@ -461,13 +488,6 @@ public class GuardPathfindingPatrol : MonoBehaviour
 
         return anyRayHitsPlayer;
     }
-
-
-    // Handles 2D physics collisions (currently not used for core logic).
-    void OnCollisionEnter2D(Collision2D collision) { /* Debug.Log($"Collided with {collision.gameObject.name}"); */ }
-
-    // Handles 2D trigger collisions (currently not used for core logic).
-    void OnTriggerEnter2D(Collider2D other) { /* Debug.Log($"Triggered by {other.gameObject.name}"); */ }
 
     // Draws visual debugging aids in the Scene view, such as patrol paths, detection radius, and view cone.
     void OnDrawGizmosSelected()

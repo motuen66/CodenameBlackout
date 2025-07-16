@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -80,7 +80,7 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(explosionClip, 0.7f);
         Debug.Log("Playing explosion sound");
-        
+
     }
     public void PlayWelcomeSound()
     {
@@ -125,6 +125,13 @@ public class AudioManager : MonoBehaviour
             footstepSource.volume = 1f;
             footstepSource.Play();
         }
+    }
+
+    public void ToggleAllSound()
+    {
+        AudioListener.pause = !AudioListener.pause;
+
+        Debug.Log("Sound Muted: " + AudioListener.pause);
     }
 
     public void StopFootstep()
